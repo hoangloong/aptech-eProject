@@ -10,6 +10,7 @@ import { PrimeModule } from '../@shared/prime.module';
 import { CartComponent } from './cart/cart.component';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
+import { AboutUsComponent } from './about-us/about-us.component';
 
 @NgModule({
   declarations: [
@@ -22,6 +23,7 @@ import { RegisterComponent } from './register/register.component';
     CartComponent,
     LoginComponent,
     RegisterComponent,
+    AboutUsComponent,
   ],
   imports: [CommonModule, PrimeModule],
   exports: [HomeComponent],
