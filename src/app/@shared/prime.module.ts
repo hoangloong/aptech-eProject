@@ -9,6 +9,12 @@ import { ButtonModule } from 'primeng/button';
 import { SidebarModule } from 'primeng/sidebar';
 import { InputNumberModule } from 'primeng/inputnumber';
 import { CheckboxModule } from 'primeng/checkbox';
+import { InputTextModule } from 'primeng/inputtext';
+import { InputTextareaModule } from 'primeng/inputtextarea';
+import { AccordionModule } from 'primeng/accordion';
+import { BadgeModule } from 'primeng/badge';
+import { SliderModule } from 'primeng/slider';
+import { GalleriaModule } from 'primeng/galleria';
 
 const primeModules = [
   StyleClassModule,
@@ -19,6 +25,12 @@ const primeModules = [
   SidebarModule,
   InputNumberModule,
   CheckboxModule,
+  InputTextModule,
+  InputTextareaModule,
+  AccordionModule,
+  BadgeModule,
+  SliderModule,
+  GalleriaModule,
 ];
 
 @NgModule({

@@ -1,0 +1,37 @@
+<div class="surface-section px-4 py-8 md:px-6 lg:px-8">
+  <div class="text-900 font-bold text-3xl text-center">Category Title</div>
+  <p class="text-600 font-normal text-xl text-center">Nullam faucibus, sem et bibendum finibus, sapien ipsum congue
+    felis, sit amet pretium ex nisl ut eros.</p>
+  <p-divider></p-divider>
+  <div class="flex flex-wrap lg:flex-nowrap">
+    <div class="col-fixed lg:col-2 mr-4 flex p-0 flex-column w-full lg:w-3">
+      <p-accordion [multiple]="true">
+        <p-accordionTab header="Dry fruits">
+
+        </p-accordionTab>
+        <p-accordionTab header="Seeds">
+
+        </p-accordionTab>
+        <p-accordionTab header="Dates">
+
+        </p-accordionTab>
+        <p-accordionTab header="Nuts & Berries">
+
+        </p-accordionTab>
+        <p-accordionTab header="Filter by price">
+          <p-slider [range]="true"></p-slider>
+        </p-accordionTab>
+        <p-accordionTab header="Sort by">
+          <ul class="text-700 text-base p-0 m-0 list-none">
+            <li class="hover:text-900 cursor-pointer py-2">Newest Items</li>
+            <li class="hover:text-900 cursor-pointer py-2">Best Seller</li>
+            <li class="hover:text-900 cursor-pointer py-2">Lowest Price</li>
+            <li class="hover:text-900 cursor-pointer py-2">Highest Price</li>
+          </ul>
+        </p-accordionTab>
+      </p-accordion>
+    </div>
+    <div class="w-full border-2 border-dashed border-round surface-border surface-section mt-3 lg:mt-0"
+      style="min-height: 25rem;"></div>
+  </div>
+</div>
