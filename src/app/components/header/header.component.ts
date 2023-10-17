@@ -16,4 +16,5 @@ export class HeaderComponent extends BaseClass implements OnInit {
   override ngOnInit(): void {
     this._coookie.set('cartItems', '[123]');
   }
+  
 }
