@@ -15,6 +15,7 @@ import { AccordionModule } from 'primeng/accordion';
 import { BadgeModule } from 'primeng/badge';
 import { SliderModule } from 'primeng/slider';
 import { GalleriaModule } from 'primeng/galleria';
+import { TabViewModule } from 'primeng/tabview';
 
 const primeModules = [
   StyleClassModule,
@@ -31,6 +32,7 @@ const primeModules = [
   BadgeModule,
   SliderModule,
   GalleriaModule,
+  TabViewModule
 ];
 
 @NgModule({

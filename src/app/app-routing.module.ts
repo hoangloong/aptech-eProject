@@ -8,6 +8,7 @@ import { AboutUsComponent } from './pages/about-us/about-us.component';
 import { CategoriesResolver } from './@common/resolvers/categories.resolver';
 import { ContactUsComponent } from './pages/contact-us/contact-us.component';
 import { ProductsListComponent } from './pages/products-list/products-list.component';
+import { ProductDetailsComponent } from './pages/product-details/product-details.component';
 
 const routes: Routes = [
   {
@@ -20,6 +21,7 @@ const routes: Routes = [
   { path: 'about-us', component: AboutUsComponent },
   { path: 'contact-us', component: ContactUsComponent },
   { path: 'products', component: ProductsListComponent },
+  { path: 'products/:id', component: ProductDetailsComponent },
 ];
 
 @NgModule({

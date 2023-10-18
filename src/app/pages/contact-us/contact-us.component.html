@@ -1,38 +1,38 @@
-<div class="surface-section px-4 py-8 md:px-6 lg:px-8">
-  <div class="grid">
-    <div class="col-12 md:col-6">
+<div class="bg-white px-4 py-8 md:px-6 lg:px-8">
+  <div class="grid grid-cols-12">
+    <div class="col-span-12 md:col-span-6">
       <div class="p-fluid pr-0 md:pr-6">
-        <div class="field">
-          <label for="name" class="font-medium">Name</label>
-          <input id="name" type="text" pInputText>
+        <div class="flex flex-col gap-2 mb-3">
+          <label for="name" class="font-medium text-gray-500">Name</label>
+          <input id="name" type="text" pInputText class="w-full px-4 py-3 border">
         </div>
-        <div class="field">
-          <label for="email" class="font-medium">Email</label>
-          <input id="email" type="text" pInputText>
+        <div class="flex flex-col gap-2 mb-3">
+          <label for="email" class="font-medium text-gray-500">Email</label>
+          <input id="email" type="text" pInputText class="w-full px-4 py-3 border">
         </div>
-        <div class="field">
-          <label for="company" class="font-medium">Company</label>
-          <input id="company" type="text" pInputText>
+        <div class="flex flex-col gap-2 mb-3">
+          <label for="company" class="font-medium text-gray-500">Company</label>
+          <input id="company" type="text" pInputText class="w-full px-4 py-3 border">
         </div>
-        <div class="field">
-          <label for="message" class="font-medium">Message</label>
-          <textarea id="message" pInputTextarea rows="6"
+        <div class="flex flex-col gap-2 mb-3">
+          <label for="message" class="font-medium text-gray-500">Message</label>
+          <textarea id="message" pInputTextarea class="w-full px-4 py-3 border" rows="6"
             style="height: 176px; overflow: hidden; resize: vertical;"></textarea>
         </div>
-        <p-button pRipple label="Send Message" icon="pi pi-send">
-        </p-button>
+        <button pButton pRipple label="Send Message" icon="pi pi-send" class="text-white bg-blue-500 px-4 py-3">
+        </button>
       </div>
     </div>
-    <div class="col-12 md:col-6 bg-no-repeat bg-right-bottom"
+    <div class="col-span-12 md:col-span-6 bg-no-repeat bg-right-bottom"
       style="background-image: url('https://blocks.primeng.org/assets/images/blocks/contact/contact-1.png');">
-      <div class="text-900 text-2xl font-medium mb-6">Contact Us</div>
+      <div class="text-gray-900 text-2xl font-medium mb-6">Contact Us</div>
       <div class="w-full" *ngIf="apiLoaded | async">
-        <google-map [height]="300" [width]="'100%'"></google-map>
+        <google-map [height]="300" [width]="'100%'" [options]="mapOptions"></google-map>
       </div>
-      <ul class="list-none p-0 m-0 mt-6 text-700">
-        <li class="flex align-items-center mb-3"><i class="pi pi-phone mr-2"></i><span>+123456789</span></li>
-        <li class="flex align-items-center mb-3"><i class="pi pi-twitter mr-2"></i><span>@prime_ng</span></li>
-        <li class="flex align-items-center"><i class="pi pi-inbox mr-2"></i><span>contact@primetek.com.tr</span></li>
+      <ul class="list-none p-0 m-0 mt-6 text-gray-500">
+        <li class="flex items-center mb-3"><i class="pi pi-phone mr-2"></i><span>+123456789</span></li>
+        <li class="flex items-center mb-3"><i class="pi pi-twitter mr-2"></i><span>@prime_ng</span></li>
+        <li class="flex items-center"><i class="pi pi-inbox mr-2"></i><span>contact@primetek.com.tr</span></li>
       </ul>
     </div>
   </div>
