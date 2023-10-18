@@ -1,10 +1,10 @@
-<div class="surface-section px-4 py-8 md:px-6 lg:px-8">
-  <div class="text-900 font-bold text-3xl text-center">Category Title</div>
-  <p class="text-600 font-normal text-xl text-center">Nullam faucibus, sem et bibendum finibus, sapien ipsum congue
+<div class="bg-white px-4 py-8 md:px-6 lg:px-8">
+  <div class="text-gray-900 font-bold text-3xl text-center">Category Title</div>
+  <p class="text-gray-600 font-normal text-xl text-center">Nullam faucibus, sem et bibendum finibus, sapien ipsum congue
     felis, sit amet pretium ex nisl ut eros.</p>
   <p-divider></p-divider>
   <div class="flex flex-wrap lg:flex-nowrap">
-    <div class="col-fixed lg:col-2 mr-4 flex p-0 flex-column w-full lg:w-3">
+    <div class="col-fixed lg:col-2 mr-4 flex p-0 flex-col w-full lg:w-1/4">
       <p-accordion [multiple]="true">
         <p-accordionTab header="Dry fruits">
 
@@ -22,16 +22,86 @@
           <p-slider [range]="true"></p-slider>
         </p-accordionTab>
         <p-accordionTab header="Sort by">
-          <ul class="text-700 text-base p-0 m-0 list-none">
-            <li class="hover:text-900 cursor-pointer py-2">Newest Items</li>
-            <li class="hover:text-900 cursor-pointer py-2">Best Seller</li>
-            <li class="hover:text-900 cursor-pointer py-2">Lowest Price</li>
-            <li class="hover:text-900 cursor-pointer py-2">Highest Price</li>
+          <ul class="text-gray-500 text-base p-0 m-0 list-none">
+            <li class="hover:text-gray-900 cursor-pointer py-2">Newest Items</li>
+            <li class="hover:text-gray-900 cursor-pointer py-2">Best Seller</li>
+            <li class="hover:text-gray-900 cursor-pointer py-2">Lowest Price</li>
+            <li class="hover:text-gray-900 cursor-pointer py-2">Highest Price</li>
           </ul>
         </p-accordionTab>
       </p-accordion>
     </div>
-    <div class="w-full border-2 border-dashed border-round surface-border surface-section mt-3 lg:mt-0"
-      style="min-height: 25rem;"></div>
+    <div class="w-full bg-white mt-3 lg:mt-0" style="min-height: 25rem;">
+
+      <div class="grid grid-cols-12 m-0 p-0 border rounded-md">
+        <div class="col-span-12 md:col-span-6 lg:col-span-4 md:border-r border-b">
+          <div class="p-4"><img
+              src="	https://blocks.primeng.org/assets/images/blocks/ecommerce/productlist/product-list-6-1.png"
+              class="w-full">
+            <div class="flex items-center justify-between mt-5 mb-3"><span
+                class="text-gray-900 font-medium text-xl">Product Name</span><span
+                class="bg-blue-100 text-blue-700 font-bold text-sm px-2 py-1" style="border-radius: 1rem;">NEW</span>
+            </div><span class="text-gray-900">Brand</span>
+            <div class="text-gray-900 text-xl font-medium mt-3">$120.00</div>
+          </div>
+        </div>
+        <div class="col-span-12 md:col-span-6 lg:col-span-4 lg:border-r border-b">
+          <div class="p-4"><img
+              src="	https://blocks.primeng.org/assets/images/blocks/ecommerce/productlist/product-list-6-2.png"
+              class="w-full">
+            <div class="flex items-center justify-between mt-5 mb-3"><span
+                class="text-gray-900 font-medium text-xl">Product Name</span><span
+                class="bg-blue-100 text-blue-700 font-bold text-sm px-2 py-1" style="border-radius: 1rem;">NEW</span>
+            </div><span class="text-gray-900">Brand</span>
+            <div class="text-gray-900 text-xl font-medium mt-3">$120.00</div>
+          </div>
+        </div>
+        <div class="col-span-12 md:col-span-6 lg:col-span-4 md:border-r lg:border-r-0 border-b ">
+          <div class="p-4"><img
+              src="	https://blocks.primeng.org/assets/images/blocks/ecommerce/productlist/product-list-6-3.png"
+              class="w-full">
+            <div class="flex items-center justify-between mt-5 mb-3"><span
+                class="text-gray-900 font-medium text-xl">Product Name</span><span
+                class="bg-blue-100 text-blue-700 font-bold text-sm px-2 py-1" style="border-radius: 1rem;">NEW</span>
+            </div><span class="text-gray-900">Brand</span>
+            <div class="text-gray-900 text-xl font-medium mt-3">$120.00</div>
+          </div>
+        </div>
+        <div class="col-span-12 md:col-span-6 lg:col-span-4 lg:border-r border-b lg:border-b-0 ">
+          <div class="p-4"><img
+              src="	https://blocks.primeng.org/assets/images/blocks/ecommerce/productlist/product-list-6-4.png"
+              class="w-full">
+            <div class="flex items-center justify-between mt-5 mb-3"><span
+                class="text-gray-900 font-medium text-xl">Product Name</span><span
+                class="bg-blue-100 text-blue-700 font-bold text-sm px-2 py-1" style="border-radius: 1rem;">NEW</span>
+            </div><span class="text-gray-900">Brand</span>
+            <div class="text-gray-900 text-xl font-medium mt-3">$120.00</div>
+          </div>
+        </div>
+        <div class="col-span-12 md:col-span-6 lg:col-span-4 border-b md:border-b-0 md:border-r ">
+          <div class="p-4"><img
+              src="	https://blocks.primeng.org/assets/images/blocks/ecommerce/productlist/product-list-6-5.png"
+              class="w-full">
+            <div class="flex items-center justify-between mt-5 mb-3"><span
+                class="text-gray-900 font-medium text-xl">Product Name</span><span
+                class="bg-blue-100 text-blue-700 font-bold text-sm px-2 py-1" style="border-radius: 1rem;">NEW</span>
+            </div><span class="text-gray-900">Brand</span>
+            <div class="text-gray-900 text-xl font-medium mt-3">$120.00</div>
+          </div>
+        </div>
+        <div class="col-span-12 md:col-span-6 lg:col-span-4">
+          <div class="p-4"><img
+              src="	https://blocks.primeng.org/assets/images/blocks/ecommerce/productlist/product-list-6-6.png"
+              class="w-full">
+            <div class="flex items-center justify-between mt-5 mb-3"><span
+                class="text-gray-900 font-medium text-xl">Product Name</span><span
+                class="bg-blue-100 text-blue-700 font-bold text-sm px-2 py-1" style="border-radius: 1rem;">NEW</span>
+            </div><span class="text-gray-900">Brand</span>
+            <div class="text-gray-900 text-xl font-medium mt-3">$120.00</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
   </div>
 </div>

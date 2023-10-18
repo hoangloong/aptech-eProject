@@ -1,3 +1,7 @@
-.btn-icon {
-  @apply hover:bg-slate-100 px-2 h-9 w-9 rounded-full transition-all;
+.auth {
+  @apply bg-gray-900 px-3 sm:px-6 py-3 flex items-stretch justify-center sm:justify-end border-b text-sm;
+}
+
+.auth-action {
+  @apply text-white font-medium inline-flex items-center cursor-pointer px-3 hover:text-gray-200 no-underline;
 }
