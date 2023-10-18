@@ -10,6 +10,10 @@ import { Observable, catchError, map, of } from 'rxjs';
 export class ContactUsComponent {
   apiLoaded: Observable<boolean>;
 
+  mapOptions: google.maps.MapOptions = {
+    center: { lat: 21.028718, lng: 105.782159 },
+  };
+
   constructor(httpClient: HttpClient) {
     // If you're using the `<map-heatmap-layer>` directive, you also have to include the `visualization` library
     // when loading the Google Maps API. To do so, you can add `&libraries=visualization` to the script URL:
