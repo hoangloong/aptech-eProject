@@ -3,4 +3,6 @@ export type Category = {
   name: string;
   description: string;
   thumbnail: string;
+  parentId: number | null;
+  categories: Category[];
 };

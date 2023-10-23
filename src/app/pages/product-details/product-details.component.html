@@ -1,71 +1,48 @@
-<div class="bg-white px-4 py-8 md:px-6 lg:px-8">
+<div *ngIf="product" class=" bg-white px-4 py-8 md:px-6 lg:px-8">
   <div class="grid grid-cols-12 mb-7">
     <div class="col-span-12 lg:col-span-6">
       <div class="flex">
-        <div class="flex flex-col w-1/6 justify-between">
-          <img class="w-full cursor-pointer border-2 rounded-md transition-all border-blue-500 "
-            src="https://blocks.primeng.org/assets/images/blocks/ecommerce/productoverview/product-overview-3-1.png">
-          <img class="w-full cursor-pointer border-2 rounded-md border-transparent transition-all"
-            src="https://blocks.primeng.org/assets/images/blocks/ecommerce/productoverview/product-overview-3-2.png">
-          <img class="w-full cursor-pointer border-2 rounded-md border-transparent transition-all"
-            src="https://blocks.primeng.org/assets/images/blocks/ecommerce/productoverview/product-overview-3-3.png">
-          <img class="w-full cursor-pointer border-2 rounded-md border-transparent transition-all"
-            src="https://blocks.primeng.org/assets/images/blocks/ecommerce/productoverview/product-overview-3-4.png"><!---->
+        <div class="flex flex-col w-1/6 justify-start gap-1">
+          <img *ngFor="let img of product.productImages"
+            [ngClass]="{'border-2 border-green-500': selectedImg === img.id}" (click)="selectedImg = img.id"
+            class="w-full cursor-pointer border rounded-md transition-all max-h-[115px] object-contain"
+            [src]="img.imgUrl">
         </div>
-        <div class="pl-3 w-5/6"><img class="w-full rounded-md"
-            src="https://blocks.primeng.org/assets/images/blocks/ecommerce/productoverview/product-overview-3-1.png">
+        <div class="pl-3 w-5/6"><img class="w-full border rounded-md h-[550px] object-contain" [src]="currentImg">
         </div>
       </div>
     </div>
     <div class="col-span-12 lg:col-span-6 py-3 lg:pl-6">
-      <div class="flex items-center text-xl font-medium text-gray-900 mb-4">Product Title Placeholder</div>
-      <div class="flex items-center justify-between mb-5"><span
-          class="text-gray-900 font-medium text-3xl block">$120</span>
-        <div class="flex items-center"><span class="mr-3"><i class="pi pi-star-fill text-yellow-500 mr-1"></i><i
-              class="pi pi-star-fill text-yellow-500 mr-1"></i><i class="pi pi-star-fill text-yellow-500 mr-1"></i><i
-              class="pi pi-star-fill text-yellow-500 mr-1"></i><i class="pi pi-star text-gray-500 mr-1"></i></span><span
-            class="text-sm"><b class="text-gray-900 mr-1">24</b><span class="text-500"></span>reviews</span></div>
-      </div>
-      <div class="font-bold text-gray-900 mb-3">Color</div>
-      <div class="flex items-center mb-5">
-        <div
-          class="w-[2rem] h-[2rem] flex-shrink-0 rounded-[50%] bg-bluegray-500 mr-3 cursor-pointer border-2  transition-all"
-          style="box-shadow: 0 0 0 0.2rem var(--bluegray-500);"></div>
-        <div
-          class="w-[2rem] h-[2rem] flex-shrink-0 rounded-[50%] bg-green-500 mr-3 cursor-pointer border-2  transition-all">
-        </div>
-        <div class="w-[2rem] h-[2rem] flex-shrink-0 rounded-[50%] bg-blue-500 cursor-pointer border-2  transition-all">
+      <div class="flex items-center text-xl font-medium text-gray-900 mb-4">{{ product.name }}</div>
+      <div class="flex items-center justify-between mb-5">
+        <span class="text-gray-900 font-medium text-3xl block">{{(currentAttribute?.discountPrice ||
+          currentAttribute?.originPrice) | currency}}
+          <span class="text-xl"> | <span class="line-through">{{ currentAttribute?.discountPrice ?
+              (currentAttribute?.originPrice | currency) : '' }}</span></span>
+        </span>
+        <div class="flex items-center"><span class="mr-3">
+            <p-rating [(ngModel)]="rating" [readonly]="true" [cancel]="false"></p-rating>
+          </span><span class="text-sm">
+            <b class="text-gray-900 mr-1">{{ product.reviews.length }}</b>
+            <span class="text-500"></span>reviews</span>
         </div>
       </div>
-      <div class="mb-3 flex items-center justify-between"><span class="font-bold text-gray-900">Size</span><a
-          class="cursor-pointer text-gray-600 text-sm flex items-center">Size Guide <i
-            class="ml-1 pi pi-angle-right"></i></a></div>
+      <div class="mb-3 flex items-center justify-between"><span class="font-bold text-gray-900">Weight</span></div>
       <div class="grid grid-cols-12 grid-nogutter items-center mb-5">
-        <div
-          class="col h-[3rem] border border-gray-300 text-gray-900 inline-flex justify-center items-center flex-shrink-0 rounded-md mr-3 cursor-pointer hover:bg-gray-100 transition-duration-150 transition-colors">
-          XS</div>
-        <div
-          class="col h-[3rem] border border-gray-300 text-gray-900 inline-flex justify-center items-center flex-shrink-0 rounded-md mr-3 cursor-pointer hover:bg-gray-100 transition-duration-150 transition-colors">
-          S</div>
-        <div
-          class="col h-[3rem] inline-flex justify-center items-center flex-shrink-0 rounded-md mr-3 cursor-pointer hover:bg-gray-100 transition-duration-150 transition-colors border-blue-500 border-2 text-blue-500">
-          M</div>
-        <div
-          class="col h-[3rem] border border-gray-300 text-gray-900 inline-flex justify-center items-center flex-shrink-0 rounded-md mr-3 cursor-pointer hover:bg-gray-100 transition-duration-150 transition-colors">
-          L</div>
-        <div
-          class="col h-[3rem] border border-gray-300 text-gray-900 inline-flex justify-center items-center flex-shrink-0 rounded-md cursor-pointer hover:bg-gray-100 transition-duration-150 transition-colors">
-          XL</div>
+        <p-dropdown [options]="weightDropdownOptions" [(ngModel)]="selectedAttribute" optionLabel="label"
+          optionValue="value"></p-dropdown>
       </div>
       <div class="font-bold text-gray-900 mb-3">Quantity</div>
       <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between">
-        <p-inputNumber [showButtons]="true" buttonLayout="horizontal" spinnerMode="horizontal" [min]="0"
+        <p-inputNumber [disabled]="!product.stock" [showButtons]="true" buttonLayout="horizontal"
+          spinnerMode="horizontal" [min]="0" [max]="product.stock" [(ngModel)]="quantity"
           inputStyleClass="w-[3rem] text-center py-3 border" decrementButtonClass="p-button-text"
           incrementButtonClass="p-button-text" incrementButtonIcon="pi pi-plus" decrementButtonIcon="pi pi-minus"
           class="p-element p-inputwrapper ng-valid p-inputwrapper-filled ng-touched ng-dirty">
         </p-inputNumber>
         <div class="flex items-center flex-1 mt-3 sm:mt-0 ml-0 sm:ml-5">
-          <button pButton pRipple label="Add to Cart" class="flex-1 mr-5 bg-blue-500 px-4 py-3 text-white"></button>
+          <button [disabled]="!quantity" pButton pRipple label="Add to Cart" (click)="handleAddToCartClick()"
+            class="flex-1 mr-5 bg-blue-500 px-4 py-3 text-white"></button>
           <i class="pi text-2xl cursor-pointer pi-heart text-gray-600"></i>
         </div>
       </div>
@@ -73,89 +50,16 @@
   </div>
   <p-tabView>
     <p-tabPanel header="Details">
-      <div class="text-gray-900 font-medium text-3xl mb-4 mt-2">Product Details</div>
-      <p class="leading-6 text-gray-500 p-0 mx-0 mt-0 mb-4">Volutpat maecenas volutpat blandit aliquam etiam erat
-        velit scelerisque in. Duis ultricies lacus sed turpis tincidunt id. Sed tempus urna et pharetra. Metus
-        vulputate eu scelerisque felis imperdiet proin fermentum. Venenatis urna cursus eget nunc scelerisque
-        viverra mauris in. Viverra justo nec ultrices dui sapien eget mi proin. Laoreet suspendisse interdum
-        consectetur libero id faucibus.</p>
-      <div class="grid">
-        <div class="col-span-12 lg:col-span-4"><span class="text-gray-900 block font-medium mb-3">Highlights</span>
-          <ul class="py-0 pl-3 m-0 text-gray-500 mb-3">
-            <li class="mb-2">Vulputate sapien nec.</li>
-            <li class="mb-2">Purus gravida quis blandit.</li>
-            <li class="mb-2">Nisi quis eleifend quam adipiscing.</li>
-            <li>Imperdiet proin fermentum.</li>
-          </ul>
-        </div>
-        <div class="col-span-12 lg:col-span-4"><span class="text-gray-900 block font-medium mb-3">Size and Fit</span>
-          <ul class="list-none p-0 m-0 text-gray-500 mb-4">
-            <li class="mb-3"><span class="font-medium">Leo vel:</span> Egestas congue.</li>
-            <li class="mb-3"><span class="font-medium">Sociis natoque:</span> Parturient montes nascetur.</li>
-            <li><span class="font-medium">Suspendisse in:</span> Purus sit amet volutpat.</li>
-          </ul>
-        </div>
-        <div class="col-span-12 lg:col-span-4"><span class="text-gray-900 block font-medium mb-3">Material &amp;
-            Care</span>
-          <ul class="p-0 m-0 text-gray-500 flex flex-wrap flex-col xl:flex-row">
-            <li class="flex items-center white-space-nowrap w-10rem block mr-2 mb-3"><i
-                class="pi pi-sun mr-2"></i><span>Not dryer safe</span></li>
-            <li class="flex items-center white-space-nowrap w-10rem block mb-3"><i
-                class="pi pi-times-circle mr-2"></i><span>No chemical wash</span></li>
-            <li class="flex items-center white-space-nowrap w-10rem block mb-3 mr-2"><i
-                class="pi pi-sliders-h mr-2"></i><span>Iron medium heat</span></li>
-            <li class="flex items-center white-space-nowrap w-10rem block mb-3"><i
-                class="pi pi-minus-circle mr-2"></i><span>Dry flat</span></li>
-          </ul>
-        </div>
-      </div>
+      <p class="leading-6 text-gray-500 p-0 mx-0 mt-0 mb-4">
+        {{ product.description }}
+      </p>
     </p-tabPanel><!---->
     <p-tabPanel header="Reviews">
-      <div class="text-gray-900 font-medium text-3xl mb-4 mt-2">Customer Reviews</div>
       <ul class="list-none p-0 m-0">
-        <li class="pb-5 border-b "><span><i class="pi pi-star-fill text-yellow-500 mr-1"></i><i
-              class="pi pi-star-fill text-yellow-500 mr-1"></i><i class="pi pi-star-fill text-yellow-500 mr-1"></i><i
-              class="pi pi-star-fill text-yellow-500 mr-1"></i><i class="pi pi-star-fill text-gray-500"></i></span>
-          <div class="text-gray-900 font-medium text-xl my-3">Absolute Perfection!</div>
-          <p class="mx-0 mt-0 mb-3 text-gray-500 leading-6">Blandit libero volutpat sed cras ornare arcu dui
-            vivamus. Arcu dictum varius duis at consectetur lorem donec massa. Imperdiet proin fermentum leo vel
-            orci porta non. Porttitor rhoncus dolor purus non.</p><span class="text-gray-600 font-medium">Darlene
-            Robertson, 2 days ago</span>
-        </li>
-        <li class="py-5 border-b "><span><i class="pi pi-star-fill text-yellow-500 mr-1"></i><i
-              class="pi pi-star-fill text-yellow-500 mr-1"></i><i class="pi pi-star-fill text-yellow-500 mr-1"></i><i
-              class="pi pi-star-fill text-yellow-500 mr-1"></i><i class="pi pi-star-fill text-yellow-500"></i></span>
-          <div class="text-gray-900 font-medium text-xl my-3">Classy</div>
-          <p class="mx-0 mt-0 mb-3 text-gray-500 leading-6">Venenatis cras sed felis eget. Proin nibh nisl
-            condimentum id venenatis a condimentum.</p><span class="text-gray-600 font-medium">Kristin Watson, 2 days
-            ago</span>
-        </li>
+        <ng-container *ngFor="let item of product.reviews">
+          <app-reviews [review]="item"></app-reviews>
+        </ng-container>
       </ul>
-    </p-tabPanel>
-    <p-tabPanel header="Shipping">
-
-      <div class="text-gray-900 font-medium text-3xl mb-4 mt-2">Shipping Placeholder</div>
-      <p class="leading-6 text-gray-500 p-0 mx-0 mt-0 mb-4">Mattis aliquam faucibus purus in massa tempor nec
-        feugiat nisl. Justo donec enim diam vulputate ut pharetra. Tempus egestas sed sed risus. Feugiat sed
-        lectus vestibulum mattis. Tristique nulla aliquet enim tortor at auctor urna nunc. Habitant morbi
-        tristique senectus et. Facilisi nullam vehicula ipsum.</p>
-      <div class="grid">
-        <div class="col-span-12 md:col-span-6"><span class="text-gray-900 block font-medium mb-3">Shipping Costs</span>
-          <ul class="py-0 pl-3 m-0 text-gray-500 mb-3">
-            <li class="mb-2">Japan - JPY 2,500.</li>
-            <li class="mb-2">Europe – EUR 10</li>
-            <li class="mb-2">Switzerland – CHF 10</li>
-            <li class="mb-2">Canada – CAD 25</li>
-            <li class="mb-2">USA – USD 20</li>
-            <li class="mb-2">Australia – AUD 30</li>
-            <li class="mb-2">United Kingdom – GBP 10</li>
-          </ul>
-        </div>
-        <div class="col-span-12 md:col-span-6"><span class="text-gray-900 block font-medium mb-3">Return Policy</span>
-          <p class="leading-6 text-gray-500 p-0 m-0">Pharetra et ultrices neque ornare aenean euismod elementum
-            nisi. Diam phasellus vestibulum lorem sed. Mattis molestie a iaculis at. </p>
-        </div>
-      </div>
     </p-tabPanel>
   </p-tabView>
 </div>

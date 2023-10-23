@@ -6,17 +6,16 @@
   <div class="flex flex-wrap lg:flex-nowrap">
     <div class="col-fixed lg:col-2 mr-4 flex p-0 flex-col w-full lg:w-1/4">
       <p-accordion [multiple]="true">
-        <p-accordionTab header="Dry fruits">
-
-        </p-accordionTab>
-        <p-accordionTab header="Seeds">
-
-        </p-accordionTab>
-        <p-accordionTab header="Dates">
-
-        </p-accordionTab>
-        <p-accordionTab header="Nuts & Berries">
-
+        <p-accordionTab *ngFor="let item of categories" [selected]="selectedCategories.includes(item.id.toString())"
+          [header]="item.name + ' (' + (item.categories ? item.categories.length : 0) + ')'">
+          <ul class="text-gray-500 text-base p-0 m-0 list-none">
+            <li *ngFor="let sub of item.categories" class="hover:text-gray-900 cursor-pointer py-2 flex items-start">
+              <p-checkbox name="group" class="mr-3 border-2 rounded-md" [value]="sub.id.toString()"
+                [(ngModel)]="selectedSubCategories" [inputId]="sub.id.toString()"
+                (onChange)="handleChangeSelectedCategories()"></p-checkbox>
+              <label class="cursor-pointer" [for]="sub.id.toString()">{{ sub.name }}</label>
+            </li>
+          </ul>
         </p-accordionTab>
         <p-accordionTab header="Filter by price">
           <p-slider [range]="true"></p-slider>
@@ -33,73 +32,27 @@
     </div>
     <div class="w-full bg-white mt-3 lg:mt-0" style="min-height: 25rem;">
 
-      <div class="grid grid-cols-12 m-0 p-0 border rounded-md">
-        <div class="col-span-12 md:col-span-6 lg:col-span-4 md:border-r border-b">
-          <div class="p-4"><img
-              src="	https://blocks.primeng.org/assets/images/blocks/ecommerce/productlist/product-list-6-1.png"
-              class="w-full">
-            <div class="flex items-center justify-between mt-5 mb-3"><span
-                class="text-gray-900 font-medium text-xl">Product Name</span><span
-                class="bg-blue-100 text-blue-700 font-bold text-sm px-2 py-1" style="border-radius: 1rem;">NEW</span>
-            </div><span class="text-gray-900">Brand</span>
-            <div class="text-gray-900 text-xl font-medium mt-3">$120.00</div>
+      <div class="grid grid-cols-12 m-0 p-0">
+        <ng-container *ngIf="products.length;else isEmpty">
+          <div *ngFor="let prod of products" class="col-span-12 md:col-span-6 lg:col-span-4 px-3">
+            <app-product-list-item [product]="prod"></app-product-list-item>
+            <!-- <div class="p-4 border rounded-lg">
+              <img [routerLink]="'/products/' + prod.id" [src]="prod.productImages[0].imgUrl" class="w-full">
+              <div class="flex items-center justify-between mt-5 mb-3">
+                <a class="text-gray-900 font-medium text-xl" [routerLink]="'/products/' + prod.id">{{
+                  prod.name }}</a>
+                <p-dropdown [options]="cities" [(ngModel)]="selectedCity" optionLabel="name"></p-dropdown>
+
+              </div><span class="text-gray-900">Brand</span>
+              <div class="text-gray-900 text-xl font-medium mt-3">{{ prod.price | currency}}</div>
+            </div> -->
           </div>
-        </div>
-        <div class="col-span-12 md:col-span-6 lg:col-span-4 lg:border-r border-b">
-          <div class="p-4"><img
-              src="	https://blocks.primeng.org/assets/images/blocks/ecommerce/productlist/product-list-6-2.png"
-              class="w-full">
-            <div class="flex items-center justify-between mt-5 mb-3"><span
-                class="text-gray-900 font-medium text-xl">Product Name</span><span
-                class="bg-blue-100 text-blue-700 font-bold text-sm px-2 py-1" style="border-radius: 1rem;">NEW</span>
-            </div><span class="text-gray-900">Brand</span>
-            <div class="text-gray-900 text-xl font-medium mt-3">$120.00</div>
+        </ng-container>
+        <ng-template #isEmpty>
+          <div class="col-span-12 text-center">
+            Not found products
           </div>
-        </div>
-        <div class="col-span-12 md:col-span-6 lg:col-span-4 md:border-r lg:border-r-0 border-b ">
-          <div class="p-4"><img
-              src="	https://blocks.primeng.org/assets/images/blocks/ecommerce/productlist/product-list-6-3.png"
-              class="w-full">
-            <div class="flex items-center justify-between mt-5 mb-3"><span
-                class="text-gray-900 font-medium text-xl">Product Name</span><span
-                class="bg-blue-100 text-blue-700 font-bold text-sm px-2 py-1" style="border-radius: 1rem;">NEW</span>
-            </div><span class="text-gray-900">Brand</span>
-            <div class="text-gray-900 text-xl font-medium mt-3">$120.00</div>
-          </div>
-        </div>
-        <div class="col-span-12 md:col-span-6 lg:col-span-4 lg:border-r border-b lg:border-b-0 ">
-          <div class="p-4"><img
-              src="	https://blocks.primeng.org/assets/images/blocks/ecommerce/productlist/product-list-6-4.png"
-              class="w-full">
-            <div class="flex items-center justify-between mt-5 mb-3"><span
-                class="text-gray-900 font-medium text-xl">Product Name</span><span
-                class="bg-blue-100 text-blue-700 font-bold text-sm px-2 py-1" style="border-radius: 1rem;">NEW</span>
-            </div><span class="text-gray-900">Brand</span>
-            <div class="text-gray-900 text-xl font-medium mt-3">$120.00</div>
-          </div>
-        </div>
-        <div class="col-span-12 md:col-span-6 lg:col-span-4 border-b md:border-b-0 md:border-r ">
-          <div class="p-4"><img
-              src="	https://blocks.primeng.org/assets/images/blocks/ecommerce/productlist/product-list-6-5.png"
-              class="w-full">
-            <div class="flex items-center justify-between mt-5 mb-3"><span
-                class="text-gray-900 font-medium text-xl">Product Name</span><span
-                class="bg-blue-100 text-blue-700 font-bold text-sm px-2 py-1" style="border-radius: 1rem;">NEW</span>
-            </div><span class="text-gray-900">Brand</span>
-            <div class="text-gray-900 text-xl font-medium mt-3">$120.00</div>
-          </div>
-        </div>
-        <div class="col-span-12 md:col-span-6 lg:col-span-4">
-          <div class="p-4"><img
-              src="	https://blocks.primeng.org/assets/images/blocks/ecommerce/productlist/product-list-6-6.png"
-              class="w-full">
-            <div class="flex items-center justify-between mt-5 mb-3"><span
-                class="text-gray-900 font-medium text-xl">Product Name</span><span
-                class="bg-blue-100 text-blue-700 font-bold text-sm px-2 py-1" style="border-radius: 1rem;">NEW</span>
-            </div><span class="text-gray-900">Brand</span>
-            <div class="text-gray-900 text-xl font-medium mt-3">$120.00</div>
-          </div>
-        </div>
+        </ng-template>
       </div>
 
     </div>

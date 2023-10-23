@@ -9,9 +9,10 @@ import { AppComponent } from './app.component';
 import { CookieService } from 'ngx-cookie-service';
 import { ComponentsModule } from './components/components.module';
 import { PagesModule } from './pages/pages.module';
+import { LayoutsComponent } from './@common/layouts/layouts.component';
 
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [AppComponent, LayoutsComponent],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,

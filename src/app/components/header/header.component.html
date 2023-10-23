@@ -9,7 +9,7 @@
     <span>Create Account</span>
   </a>
 </div>
-<div class="bg-white px-3 sm:px-6 flex items-stretch sticky top-0 border-b z-10" style="min-height: 80px">
+<div class="bg-white px-3 sm:px-6 flex items-stretch sticky top-0 border-b z-50" style="min-height: 80px">
   <a pStyleClass="#nav-1" enterClass="hidden" enterActiveClass="scalein" leaveToClass="hidden"
     leaveActiveClass="fadeout" [hideOnOutsideClick]="true"
     class="cursor-pointer flex items-center lg:hidden text-gray-500 mr-3 sm:mr-5"><i
@@ -21,171 +21,46 @@
   <div id="nav-1"
     class="bg-white hidden lg:flex absolute lg:static left-0 top-full z-10 shadow-md lg:shadow-none w-full lg:w-auto py-3 lg:py-0">
     <ul class="list-none p-0 m-0 flex flex-col lg:flex-row">
-      <li class="flex flex-col lg:flex-row">
-        <a
-          class="peer/navigation inline-flex items-center cursor-pointer border-r-2 lg:border-r-0 lg:border-b-2 border-transparent hover:border-blue-500 py-3 lg:py-0 px-6 lg:px-3 text-gray-500 select-none text-xl lg:text-base font-medium lg:font-base w-full lg:w-auto">Dry
-          fruits</a>
-        <div
-          class="peer-hover/navigation:block hover:block bg-white shadow-none lg:shadow-md lg:absolute w-full left-0 top-full px-6 py-0 lg:py-6 h-10rem lg:h-30rem z-10 hidden border">
-          <div class="flex flex-col lg:flex-row lg:justify-between">
-            <div class="flex-1 flex flex-wrap">
-              <a class="text-gray-500 hover:text-gray-900 no-underline w-1/4 flex items-center gap-x-3" href="">
-                <img src="../../../assets/imgs/cashew.png" alt="">
-                Cashew (Kaju)</a>
-              <a class="text-gray-500 hover:text-gray-900 no-underline w-1/4 flex items-center gap-x-3" href="">
-                <img src="../../../assets/imgs/anjir.png" alt="">
-                Anjir (Figs)</a>
-              <a class="text-gray-500 hover:text-gray-900 no-underline w-1/4 flex items-center gap-x-3" href=""><img
-                  src="../../../assets/imgs/kishmish.png" alt="">Kishmish (Raisins)</a>
-              <a class="text-gray-500 hover:text-gray-900 no-underline w-1/4 flex items-center gap-x-3" href=""><img
-                  src="../../../assets/imgs/walnuts.png" alt="">Walnuts
-                (Akhrot)</a>
-              <a class="text-gray-500 hover:text-gray-900 no-underline w-1/4 flex items-center gap-x-3" href=""><img
-                  src="../../../assets/imgs/trail-mix.jpg" alt="">Trail
-                Mix</a>
-              <a class="text-gray-500 hover:text-gray-900 no-underline w-1/4 flex items-center gap-x-3" href=""><img
-                  src="../../../assets/imgs/sprinkles.png" alt="">Sprinkles</a>
-              <a class="text-gray-500 hover:text-gray-900 no-underline w-1/4 flex items-center gap-x-3" href=""><img
-                  src="../../../assets/imgs/saffron.png" alt="">Saffron
-                (Kesar)</a>
-              <a class="text-gray-500 hover:text-gray-900 no-underline w-1/4 flex items-center gap-x-3" href=""><img
-                  src="../../../assets/imgs/pistachios.png" alt="">Pistachios (Pista)</a>
-              <a class="text-gray-500 hover:text-gray-900 no-underline w-1/4 flex items-center gap-x-3" href=""><img
-                  src="../../../assets/imgs/mix-dryfruits.png" alt="">Mix
-                Dryfruits</a>
-              <a class="text-gray-500 hover:text-gray-900 no-underline w-1/4 flex items-center gap-x-3" href=""><img
-                  src="../../../assets/imgs/jardalu.png" alt="">Jardalu
-                (Apricots)</a>
-              <a class="text-gray-500 hover:text-gray-900 no-underline w-1/4 flex items-center gap-x-3" href=""><img
-                  src="../../../assets/imgs/home-made-dryfruit-chocolate.png" alt="">Home
-                Made Dryfruits Chocolate</a>
-              <a class="text-gray-500 hover:text-gray-900 no-underline w-1/4 flex items-center gap-x-3" href=""><img
-                  src="../../../assets/imgs/elaichi.png" alt="">Elaichi</a>
-              <a class="text-gray-500 hover:text-gray-900 no-underline w-1/4 flex items-center gap-x-3" href=""><img
-                  src="../../../assets/imgs/dryfruits-potlis.png" alt="">Dryfruits Potlis</a>
-              <a class="text-gray-500 hover:text-gray-900 no-underline w-1/4 flex items-center gap-x-3" href=""><img
-                  src="../../../assets/imgs/dryfruit-milk-powder.png" alt="">Dryfruit Milk Powder</a>
-              <a class="text-gray-500 hover:text-gray-900 no-underline w-1/4 flex items-center gap-x-3" href=""><img
-                  src="../../../assets/imgs/dryfruit-combo.png" alt="">Dryfruit Combo</a>
-              <a class="text-gray-500 hover:text-gray-900 no-underline w-1/4 flex items-center gap-x-3" href=""><img
-                  src="../../../assets/imgs/dried-fruits.jpg" alt="">Dried
-                Fruits</a>
-              <a class="text-gray-500 hover:text-gray-900 no-underline w-1/4 flex items-center gap-x-3" href=""><img
-                  src="../../../assets/imgs/coconut-powder.png" alt="">Coconut
-                Powder</a>
-              <a class="text-gray-500 hover:text-gray-900 no-underline w-1/4 flex items-center gap-x-3" href=""><img
-                  src="../../../assets/imgs/almonds.png" alt="">Almonds
-                (Badam)</a>
-            </div>
+      <li *ngFor="let item of categories" class="flex flex-col lg:flex-row">
+        <a (click)="handleClickCategory(item)"
+          class="peer/navigation group flex cursor-pointer border-r-2 lg:border-r-0 py-3 lg:py-0 px-6 lg:px-3 text-gray-500 select-none text-xl lg:text-base font-medium lg:font-base w-full lg:w-auto">
+          <div class="flex flex-col">
+            <div class="flex flex-1 items-center">{{item.name}}</div>
+            <div class="h-[3px] group-hover:w-full w-0 bg-green-500 self-end transition-all duration-500"></div>
           </div>
-        </div>
-      </li>
-      <li class="flex flex-col lg:flex-row">
-        <a
-          class="peer/navigation inline-flex items-center cursor-pointer border-r-2 lg:border-r-0 lg:border-b-2 border-transparent hover:border-blue-500 py-3 lg:py-0 px-6 lg:px-3 text-gray-500 select-none text-xl lg:text-base font-medium lg:font-base w-full lg:w-auto">Seeds</a>
-        <div
+        </a>
+        <div *ngIf="item.categories && item.categories.length"
           class="peer-hover/navigation:block hover:block bg-white shadow-none lg:shadow-md lg:absolute w-full left-0 top-full px-6 py-0 lg:py-6 h-10rem lg:h-30rem z-10 hidden border">
           <div class="flex flex-col lg:flex-row lg:justify-between">
             <div class="flex-1 flex flex-wrap">
-              <a class="text-gray-500 hover:text-gray-900 no-underline w-1/4 flex items-center gap-x-3" href="">
-                <img src="../../../assets/imgs/cashew.png" alt="">
-                Water Melon Seeds</a>
-              <a class="text-gray-500 hover:text-gray-900 no-underline w-1/4 flex items-center gap-x-3" href="">
-                <img src="../../../assets/imgs/anjir.png" alt="">
-                Sunflower Seeds</a>
-              <a class="text-gray-500 hover:text-gray-900 no-underline w-1/4 flex items-center gap-x-3" href=""><img
-                  src="../../../assets/imgs/kishmish.png" alt="">Seven Seeds</a>
-              <a class="text-gray-500 hover:text-gray-900 no-underline w-1/4 flex items-center gap-x-3" href=""><img
-                  src="../../../assets/imgs/walnuts.png" alt="">Quinoa Seeds</a>
-              <a class="text-gray-500 hover:text-gray-900 no-underline w-1/4 flex items-center gap-x-3" href=""><img
-                  src="../../../assets/imgs/trail-mix.jpg" alt="">Pumpkin Seeds</a>
-              <a class="text-gray-500 hover:text-gray-900 no-underline w-1/4 flex items-center gap-x-3" href=""><img
-                  src="../../../assets/imgs/sprinkles.png" alt="">Flax Seeds</a>
-              <a class="text-gray-500 hover:text-gray-900 no-underline w-1/4 flex items-center gap-x-3" href=""><img
-                  src="../../../assets/imgs/saffron.png" alt="">Chia Seeds</a>
-              <a class="text-gray-500 hover:text-gray-900 no-underline w-1/4 flex items-center gap-x-3" href=""><img
-                  src="../../../assets/imgs/pistachios.png" alt="">Jowar Seeds</a>
-              <a class="text-gray-500 hover:text-gray-900 no-underline w-1/4 flex items-center gap-x-3" href=""><img
-                  src="../../../assets/imgs/mix-dryfruits.png" alt="">Chickpea Seeds</a>
-              <a class="text-gray-500 hover:text-gray-900 no-underline w-1/4 flex items-center gap-x-3" href=""><img
-                  src="../../../assets/imgs/pistachios.png" alt="">Oats Seeds</a>
-              <a class="text-gray-500 hover:text-gray-900 no-underline w-1/4 flex items-center gap-x-3" href=""><img
-                  src="../../../assets/imgs/mix-dryfruits.png" alt="">Millets Seeds</a>
-
-            </div>
-          </div>
-        </div>
-      </li>
-      <li class="flex flex-col lg:flex-row">
-        <a
-          class="peer/navigation inline-flex items-center cursor-pointer border-r-2 lg:border-r-0 lg:border-b-2 border-transparent hover:border-blue-500 py-3 lg:py-0 px-6 lg:px-3 text-gray-500 select-none text-xl lg:text-base font-medium lg:font-base w-full lg:w-auto">Dates</a>
-        <div
-          class="peer-hover/navigation:block hover:block bg-white shadow-none lg:shadow-md lg:absolute w-full left-0 top-full px-6 py-0 lg:py-6 h-10rem lg:h-30rem z-10 hidden border">
-          <div class="flex flex-col lg:flex-row lg:justify-between">
-            <div class="flex-1 flex flex-wrap">
-              <a class="text-gray-500 hover:text-gray-900 no-underline w-1/4 flex items-center gap-x-3" href="">
-                <img src="../../../assets/imgs/cashew.png" alt="">
-                Safawi Dates</a>
-              <a class="text-gray-500 hover:text-gray-900 no-underline w-1/4 flex items-center gap-x-3" href="">
-                <img src="../../../assets/imgs/anjir.png" alt="">
-                Oman Dates</a>
-              <a class="text-gray-500 hover:text-gray-900 no-underline w-1/4 flex items-center gap-x-3" href=""><img
-                  src="../../../assets/imgs/kishmish.png" alt="">Medjoul Dates</a>
-              <a class="text-gray-500 hover:text-gray-900 no-underline w-1/4 flex items-center gap-x-3" href=""><img
-                  src="../../../assets/imgs/walnuts.png" alt="">Khimiya Dates</a>
-              <a class="text-gray-500 hover:text-gray-900 no-underline w-1/4 flex items-center gap-x-3" href=""><img
-                  src="../../../assets/imgs/trail-mix.jpg" alt="">Ajwa Dates</a>
-            </div>
-          </div>
-        </div>
-      </li>
-      <li class="flex flex-col lg:flex-row">
-        <a
-          class="peer/navigation inline-flex items-center cursor-pointer border-r-2 lg:border-r-0 lg:border-b-2 border-transparent hover:border-blue-500 py-3 lg:py-0 px-6 lg:px-3 text-gray-500 select-none text-xl lg:text-base font-medium lg:font-base w-full lg:w-auto">Nuts
-          & Berries</a>
-        <div
-          class="peer-hover/navigation:block hover:block bg-white shadow-none lg:shadow-md lg:absolute w-full left-0 top-full px-6 py-0 lg:py-6 h-10rem lg:h-30rem z-10 hidden border">
-          <div class="flex flex-col lg:flex-row lg:justify-between">
-            <div class="flex-1 flex flex-wrap">
-              <a class="text-gray-500 hover:text-gray-900 no-underline w-1/4 flex items-center gap-x-3" href="">
-                <img src="../../../assets/imgs/cashew.png" alt="">
-                Prunes</a>
-              <a class="text-gray-500 hover:text-gray-900 no-underline w-1/4 flex items-center gap-x-3" href="">
-                <img src="../../../assets/imgs/anjir.png" alt="">
-                Pinenuts</a>
-              <a class="text-gray-500 hover:text-gray-900 no-underline w-1/4 flex items-center gap-x-3" href=""><img
-                  src="../../../assets/imgs/kishmish.png" alt="">Pecan Nuts</a>
-              <a class="text-gray-500 hover:text-gray-900 no-underline w-1/4 flex items-center gap-x-3" href=""><img
-                  src="../../../assets/imgs/walnuts.png" alt="">Makhana
-                (Fox Nuts)</a>
-              <a class="text-gray-500 hover:text-gray-900 no-underline w-1/4 flex items-center gap-x-3" href=""><img
-                  src="../../../assets/imgs/trail-mix.jpg" alt="">Macadamia Nuts</a>
-              <a class="text-gray-500 hover:text-gray-900 no-underline w-1/4 flex items-center gap-x-3" href=""><img
-                  src="../../../assets/imgs/sprinkles.png" alt="">Hazelnuts</a>
-              <a class="text-gray-500 hover:text-gray-900 no-underline w-1/4 flex items-center gap-x-3" href=""><img
-                  src="../../../assets/imgs/saffron.png" alt="">Fusion</a>
-              <a class="text-gray-500 hover:text-gray-900 no-underline w-1/4 flex items-center gap-x-3" href=""><img
-                  src="../../../assets/imgs/pistachios.png" alt="">Cranberry</a>
-              <a class="text-gray-500 hover:text-gray-900 no-underline w-1/4 flex items-center gap-x-3" href=""><img
-                  src="../../../assets/imgs/mix-dryfruits.png" alt="">Brazil Nuts</a>
-              <a class="text-gray-500 hover:text-gray-900 no-underline w-1/4 flex items-center gap-x-3" href=""><img
-                  src="../../../assets/imgs/jardalu.png" alt="">Blueberry</a>
-              <a class="text-gray-500 hover:text-gray-900 no-underline w-1/4 flex items-center gap-x-3" href=""><img
-                  src="../../../assets/imgs/home-made-dryfruit-chocolate.png" alt="">Black Currants</a>
+              <a *ngFor="let subCategory of item.categories" (click)="handleClickCategory(subCategory)"
+                class="group text-gray-500 hover:text-gray-900 no-underline w-1/4 flex-col cursor-pointer px-3">
+                <div class="flex gap-x-3 items-center">
+                  <img [src]="subCategory.thumbnail" alt="">
+                  {{ subCategory.name }}
+                </div>
+                <div class="group-hover:w-full w-0 transition-all duration-500 h-[2px] bg-blue-500"></div>
+              </a>
             </div>
           </div>
         </div>
       </li>
       <li class="flex flex-col lg:flex-row">
         <a routerLink="/about-us"
-          class="inline-flex items-center cursor-pointer border-r-2 lg:border-r-0 lg:border-b-2 border-transparent hover:border-blue-500 py-3 lg:py-0 px-6 lg:px-3 text-gray-500 select-none text-xl lg:text-base font-medium lg:font-base w-full lg:w-auto no-underline">
-          About us
+          class="group flex cursor-pointer py-3 lg:py-0 px-6 lg:px-3 text-gray-500 select-none text-xl lg:text-base font-medium lg:font-base w-full lg:w-auto no-underline">
+          <div class="flex flex-col">
+            <div class="flex flex-1 items-center">About Us</div>
+            <div class="h-[3px] group-hover:w-full w-0 bg-green-500 self-end transition-all duration-500"></div>
+          </div>
         </a>
       </li>
       <li class="flex flex-col lg:flex-row">
         <a routerLink="/contact-us"
-          class="inline-flex items-center cursor-pointer border-r-2 lg:border-r-0 lg:border-b-2 border-transparent hover:border-blue-500 py-3 lg:py-0 px-6 lg:px-3 text-gray-500 select-none text-xl lg:text-base font-medium lg:font-base w-full lg:w-auto no-underline">
-          Contact us
+          class="group flex cursor-pointer py-3 lg:py-0 px-6 lg:px-3 text-gray-500 select-none text-xl lg:text-base font-medium lg:font-base w-full lg:w-auto no-underline">
+          <div class="flex flex-col">
+            <div class="flex flex-1 items-center">Contact Us</div>
+            <div class="h-[3px] group-hover:w-full w-0 bg-green-500 self-end transition-all duration-500"></div>
+          </div>
         </a>
       </li>
     </ul>
@@ -196,7 +71,7 @@
         <a class="text-gray-900 font-medium inline-flex items-center cursor-pointer px-2 sm:px-3 hover:text-blue-500"><i
             class="pi pi-search mr-2 lg:mr-3 text-xl sm:text-base"></i><span class="hidden lg:inline">Search</span></a>
       </li>
-      
+
       <li class="flex">
         <a class="text-gray-900 font-medium inline-flex items-center cursor-pointer px-2 sm:px-3 hover:text-blue-500"><i
             class="pi pi-heart mr-2 lg:mr-3 text-xl sm:text-base"></i><span
@@ -214,5 +89,7 @@
 
 <p-sidebar [(visible)]="cartSidebar" [blockScroll]="true" styleClass="p-sidebar-md" [showCloseIcon]="false"
   position="right">
-  <app-cart-sidebar (onHide)="cartSidebar = !$event"></app-cart-sidebar>
+  <ng-container *ngIf="cartSidebar">
+    <app-cart-sidebar (onHide)="cartSidebar = !$event"></app-cart-sidebar>
+  </ng-container>
 </p-sidebar>

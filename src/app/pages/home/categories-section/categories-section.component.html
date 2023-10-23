@@ -1,29 +1,42 @@
 <div class="bg-white px-4 py-8 md:px-6 lg:px-8">
-  <div class="grid grid-cols-12 grid-nogutter -mt-3 -ml-3 -mr-3">
-    <div class="col-span-12 lg:col-span-6 p-3">
+  <div class="grid grid-cols-12">
+    <div class="col-span-12 lg:col-span-6 p-3 relative">
       <div
-        class="flex flex-col justify-between h-full w-full rounded-md bg-no-repeat bg-cover cursor-pointer text-white hover:text-blue-500 min-h-[30rem]"
+        class="group relative flex flex-col justify-between h-full w-full rounded-md bg-no-repeat bg-cover cursor-pointer text-white hover:text-blue-500 min-h-[30rem]"
         [ngStyle]="{'background' : 'linear-gradient(0deg, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url(' + mainCategory?.thumbnail + ')'}">
         <div class="p-4 self-start">
-          <div class=" text-2xl font-bold mb-2">{{ mainCategory?.name }}</div>
-          <span class="text-white text-lg leading-6">{{ mainCategory?.description }}</span>
+          <div
+            class="group-hover:w-full w-0 h-full bg-black absolute top-0 left-0 opacity-50 transition-all rounded-md z-0">
+          </div>
+          <div class=" text-2xl font-bold mb-2 relative z-10">{{ mainCategory?.name }}</div>
+          <span class="text-white text-lg leading-6 relative z-10">{{ mainCategory?.description }}</span>
         </div>
-        <div class="p-4 self-end"><a class="text-2xl cursor-pointer flex items-center transition-all">Shop
-            Now<i class="pi pi-fw pi-arrow-right text-2xl ml-2"></i></a></div>
+        <div class="p-4 self-end">
+          <a (click)="handleClickCategory(mainCategory)"
+            class="text-2xl cursor-pointer flex items-center transition-all relative z-10">Shop
+            Now<i class="pi pi-fw pi-arrow-right text-2xl ml-2"></i></a>
+        </div>
       </div>
     </div>
     <div class="col-span-12 lg:col-span-6">
       <div class="grid grid-nogutter lg:flex-col">
         <div *ngFor="let item of categories" class="col-span-12 p-3">
-          <div class="flex flex-col justify-between h-full w-full rounded-md bg-no-repeat bg-cover bg-center h-10rem"
+          <div
+            class="group cursor-pointer relative flex flex-col justify-between h-full w-full rounded-md bg-no-repeat bg-cover bg-center h-10rem text-white hover:text-blue-500"
             [ngStyle]="{'background' : 'linear-gradient(0deg, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url(' + item.thumbnail + ')'}">
-            <div class="p-3 self-start">
-              <div class="text-white text-2xl font-bold mb-2">{{ item.name }}</div><span
-                class="text-white text-lg leading-6">{{ item?.description }}</span>
+            <div
+              class="group-hover:w-full w-0 h-full bg-black absolute top-0 left-0 opacity-50 transition-all rounded-md z-0">
             </div>
-            <div class="p-3 self-end"><a
-                class="text-2xl cursor-pointer text-white flex items-center hover:text-blue-500 transition-all">Shop
-                Now<i class="pi pi-fw pi-arrow-right text-2xl ml-2"></i></a></div>
+            <div class="p-3 self-start relative z-10">
+              <div class="text-2xl font-bold mb-2 transition-all">{{ item.name }}</div><span
+                class="text-white text-lg leading-6">{{
+                item?.description }}</span>
+            </div>
+            <div class="p-3 self-end relative z-10">
+              <a (click)="handleClickCategory(item)"
+                class="text-2xl cursor-pointer flex items-center transition-all">Shop
+                Now<i class="pi pi-fw pi-arrow-right text-2xl ml-2"></i></a>
+            </div>
           </div>
         </div>
       </div>
