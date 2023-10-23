@@ -16,6 +16,8 @@ import { BadgeModule } from 'primeng/badge';
 import { SliderModule } from 'primeng/slider';
 import { GalleriaModule } from 'primeng/galleria';
 import { TabViewModule } from 'primeng/tabview';
+import { DropdownModule } from 'primeng/dropdown';
+import { RatingModule } from 'primeng/rating';
 
 const primeModules = [
   StyleClassModule,
@@ -32,7 +34,9 @@ const primeModules = [
   BadgeModule,
   SliderModule,
   GalleriaModule,
-  TabViewModule
+  TabViewModule,
+  DropdownModule,
+  RatingModule,
 ];
 
 @NgModule({

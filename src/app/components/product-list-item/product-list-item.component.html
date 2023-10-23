@@ -1,0 +1,13 @@
+<div *ngIf="product" class="p-4 border rounded-lg">
+  <img [routerLink]="'/products/' + product.id" [src]="product.productImages[0].imgUrl"
+    class="w-full max-h-[300px] object-contain">
+  <div class="flex items-center justify-between mt-5 mb-3">
+    <a class="text-gray-900 font-medium text-xl" [routerLink]="'/products/' + product.id">{{
+      product.name }}</a>
+    <p-dropdown [(ngModel)]="selectedAttribute" [options]="attributes" optionLabel="label"
+      optionValue="id"></p-dropdown>
+  </div>
+  <span *ngIf="getSelectedAttribute()?.discountPercent" class="text-gray-900">{{getSelectedAttribute()?.discountPercent
+    | percent}}</span>
+  <div class="text-gray-900 text-xl font-medium mt-3">{{ getSelectedAttribute()?.discountPrice| currency }}</div>
+</div>

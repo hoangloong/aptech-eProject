@@ -17,10 +17,8 @@ import { ProductDetailsComponent } from './product-details/product-details.compo
 import { HttpClientModule, HttpClientJsonpModule } from '@angular/common/http';
 import { GoogleMapsModule } from '@angular/google-maps';
 import { RouterModule } from '@angular/router';
-
-
-
-
+import { FormsModule } from '@angular/forms';
+import { ComponentsModule } from '../components/components.module';
 
 @NgModule({
   declarations: [
@@ -37,7 +35,6 @@ import { RouterModule } from '@angular/router';
     ContactUsComponent,
     ProductsListComponent,
     ProductDetailsComponent,
-    
   ],
   imports: [
     CommonModule,
@@ -45,7 +42,9 @@ import { RouterModule } from '@angular/router';
     GoogleMapsModule,
     HttpClientModule,
     HttpClientJsonpModule,
-    RouterModule
+    RouterModule,
+    FormsModule,
+    ComponentsModule,
   ],
   exports: [HomeComponent],
 })
