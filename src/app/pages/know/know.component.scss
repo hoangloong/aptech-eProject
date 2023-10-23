@@ -1,0 +1,30 @@
+img {
+    max-width: 100%;
+    height: auto;
+}
+.image-container {
+    position: relative;
+}
+
+.text-overlay {
+    position:absolute;
+    top: 50%;
+    padding: 10px;
+    font-size: 13px;
+    text-align: left; 
+    transform: translate(-50%, -50%);
+    
+}
+.text-left{
+    left: 30%;
+}
+.text-right{
+    right: -22%;
+}
+.listing-title{
+    color: chocolate;
+    font: 2em sans-serif;
+}
+.text{
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}

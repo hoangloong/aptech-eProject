@@ -1,44 +1,51 @@
 body {
-    font-family: Arial, sans-serif;
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif; 
     margin: 0;
     padding: 0;
-    background-color: #f5f5f5;
+    background-color: #fffbfb;
     
 }
 
 header {
-    background-color: #0c0c0c;
+
     color: #fff;
-    text-align: center;
+    text-align: left;
+    margin-left: 100px;
     padding: 20px;
     border-radius: 10px;
 }
 
 h1 {
-    font-size: 2.5em;
- 
+    color: chocolate;
+    font: 2em sans-serif;
+    
 }
 
 section {
     background-color: #fff;
     margin: 20px;
-    padding: 20px;
     border: 1px solid #ddd;
-    text-align: center;
     border-radius: 10px;
 }
 
 h2 {
     font-size: 1.5em;
+    text-align: left;
+    margin-left: 60px;
+}
+h3 {
+    font-size: 1.5em;
+    text-align: left;
+    margin-left: 60px;
 }
 
 p {
     font-size: 1.1em;
+    text-align: center;
 }
 
 img {
-    height: 300px;
-    width: 97%;
+    max-width: 100%;
     display: block;
     margin: 0 auto; 
     border-radius: 15px;
