@@ -26,13 +26,13 @@
             <div class="flex flex-auto justify-between items-center">
               <p-inputNumber [showButtons]="true" buttonLayout="horizontal" spinnerMode="horizontal"
                 [(ngModel)]="item.quantity" [min]="0" [max]="item.stock"
-                inputStyleClass="w-[3rem] text-center py-2 px-1"
+                (ngModelChange)="handleChangeQuantity($event, item)" inputStyleClass="w-[3rem] text-center py-2 px-1"
                 decrementButtonClass="p-button-text text-blue-400 py-1 px-1"
                 incrementButtonClass="p-button-text text-blue-400 py-1 px-1" incrementButtonIcon="pi pi-plus"
                 decrementButtonIcon="pi pi-minus"
                 class="border rounded-md ng-untouched ng-pristine ng-valid p-inputwrapper-filled">
               </p-inputNumber>
-              <button pButton pRipple icon="pi pi-trash" (click)="handleDeleteItem(item.id)"
+              <button pButton pRipple icon="pi pi-trash" (click)="handleDeleteItem(item)"
                 class="p-button-rounded text-red-500 active:bg-red-50 p-button-text">
               </button>
             </div>
@@ -48,7 +48,8 @@
         </span>
         <span class="text-gray-900 font-bold">{{getTotalAmount() | currency}}</span>
       </div>
-      <button pButton [disabled]="!cartItems.length" pRipple label="Check Out"
+      <button pButton routerLink="/cart" (click)="handleHideSidebar()" [disabled]="!cartItems.length" pRipple
+        label="Check Out"
         class="p-button-success px-3 py-2 text-white bg-green-500 border-2 border-green-500 mt-3 w-full"></button>
       <button pButton pRipple label="Continue Shopping"
         class="p-button-outlined p-button-secondary w-full px-3 py-2 border-2 border-gray-500 mt-3"

@@ -18,6 +18,8 @@ import { GalleriaModule } from 'primeng/galleria';
 import { TabViewModule } from 'primeng/tabview';
 import { DropdownModule } from 'primeng/dropdown';
 import { RatingModule } from 'primeng/rating';
+import { TagModule } from 'primeng/tag';
+import { ToastModule } from 'primeng/toast';
 
 const primeModules = [
   StyleClassModule,
@@ -37,6 +39,8 @@ const primeModules = [
   TabViewModule,
   DropdownModule,
   RatingModule,
+  TagModule,
+  ToastModule,
 ];
 
 @NgModule({

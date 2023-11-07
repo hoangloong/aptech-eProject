@@ -1,7 +1,5 @@
 <div class="bg-white px-4 py-8 md:px-6 lg:px-8">
-  <div class="text-gray-900 font-bold text-3xl text-center">Category Title</div>
-  <p class="text-gray-600 font-normal text-xl text-center">Nullam faucibus, sem et bibendum finibus, sapien ipsum congue
-    felis, sit amet pretium ex nisl ut eros.</p>
+  <div class="text-gray-900 font-bold text-3xl text-center">Products</div>
   <p-divider></p-divider>
   <div class="flex flex-wrap lg:flex-nowrap">
     <div class="col-fixed lg:col-2 mr-4 flex p-0 flex-col w-full lg:w-1/4">
@@ -36,16 +34,6 @@
         <ng-container *ngIf="products.length;else isEmpty">
           <div *ngFor="let prod of products" class="col-span-12 md:col-span-6 lg:col-span-4 px-3">
             <app-product-list-item [product]="prod"></app-product-list-item>
-            <!-- <div class="p-4 border rounded-lg">
-              <img [routerLink]="'/products/' + prod.id" [src]="prod.productImages[0].imgUrl" class="w-full">
-              <div class="flex items-center justify-between mt-5 mb-3">
-                <a class="text-gray-900 font-medium text-xl" [routerLink]="'/products/' + prod.id">{{
-                  prod.name }}</a>
-                <p-dropdown [options]="cities" [(ngModel)]="selectedCity" optionLabel="name"></p-dropdown>
-
-              </div><span class="text-gray-900">Brand</span>
-              <div class="text-gray-900 text-xl font-medium mt-3">{{ prod.price | currency}}</div>
-            </div> -->
           </div>
         </ng-container>
         <ng-template #isEmpty>

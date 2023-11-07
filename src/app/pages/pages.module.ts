@@ -17,7 +17,7 @@ import { ProductDetailsComponent } from './product-details/product-details.compo
 import { HttpClientModule, HttpClientJsonpModule } from '@angular/common/http';
 import { GoogleMapsModule } from '@angular/google-maps';
 import { RouterModule } from '@angular/router';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ComponentsModule } from '../components/components.module';
 
 @NgModule({
@@ -44,6 +44,7 @@ import { ComponentsModule } from '../components/components.module';
     HttpClientJsonpModule,
     RouterModule,
     FormsModule,
+    ReactiveFormsModule,
     ComponentsModule,
   ],
   exports: [HomeComponent],
