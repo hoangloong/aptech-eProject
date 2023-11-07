@@ -10,6 +10,8 @@ import { ContactUsComponent } from './pages/contact-us/contact-us.component';
 import { ProductsListComponent } from './pages/products-list/products-list.component';
 import { ProductDetailsComponent } from './pages/product-details/product-details.component';
 import { LayoutsComponent } from './@common/layouts/layouts.component';
+import { KnowComponent } from './pages/know/know.component';
+import { CartComponent } from './pages/cart/cart.component';
 
 const routes: Routes = [
   {
@@ -22,10 +24,13 @@ const routes: Routes = [
       { path: 'contact-us', component: ContactUsComponent },
       { path: 'products', component: ProductsListComponent },
       { path: 'products/:id', component: ProductDetailsComponent },
+      { path: 'knowledge', component: KnowComponent },
+      { path: 'login', component: LoginComponent },
+      { path: 'register', component: RegisterComponent },
+      { path: 'cart', component: CartComponent },
     ],
   },
-  { path: 'login', component: LoginComponent },
-  { path: 'register', component: RegisterComponent },
+  { path: 'server-error', component: RegisterComponent },
 ];
 
 @NgModule({

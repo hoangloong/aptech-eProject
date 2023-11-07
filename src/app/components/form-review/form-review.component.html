@@ -1,0 +1,26 @@
+<div class="p-fluid pr-0 md:pr-6 pb-5 border-b">
+  <form [formGroup]="formReview" (ngSubmit)="handleSubmit()">
+    <div class="flex flex-col gap-2 mb-3 w-full md:w-1/2">
+      <label for="customerName" class="font-medium text-sm text-gray-500">Name</label>
+      <input id="customerName" type="text" pInputText class="w-full px-4 py-1 border">
+      <span>Name is mandatory!</span>
+    </div>
+    <div class="flex flex-col gap-2 mb-3">
+      <label for="rate" class="font-medium text-sm text-gray-500">Rating</label>
+      <p-rating formControlName="rate" [cancel]="false"></p-rating>
+    </div>
+    <div class="flex flex-col gap-2 mb-3">
+      <label for="title" class="font-medium text-sm text-gray-500">Title</label>
+      <input id="title" type="text" pInputText class="w-full px-4 py-1 border">
+    </div>
+    <div class="flex flex-col gap-2 mb-3">
+      <label for="comment" class="font-medium text-sm text-gray-500">Comment</label>
+      <textarea id="comment" pInputTextarea class="w-full px-4 py-1 border" rows="6"
+        style="height: 100px; overflow: hidden; resize: vertical;"></textarea>
+    </div>
+
+    <button type="submit" pButton pRipple label="Send Review" icon="pi pi-send"
+      class="text-white bg-blue-500 px-4 py-1">
+    </button>
+  </form>
+</div>

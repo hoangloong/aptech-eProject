@@ -22,7 +22,7 @@
     class="bg-white hidden lg:flex absolute lg:static left-0 top-full z-10 shadow-md lg:shadow-none w-full lg:w-auto py-3 lg:py-0">
     <ul class="list-none p-0 m-0 flex flex-col lg:flex-row">
       <li *ngFor="let item of categories" class="flex flex-col lg:flex-row">
-        <a (click)="handleClickCategory(item)"
+        <a (click)="handleClickCategory(item)" (mouseover)="showSearch = false"
           class="peer/navigation group flex cursor-pointer border-r-2 lg:border-r-0 py-3 lg:py-0 px-6 lg:px-3 text-gray-500 select-none text-xl lg:text-base font-medium lg:font-base w-full lg:w-auto">
           <div class="flex flex-col">
             <div class="flex flex-1 items-center">{{item.name}}</div>
@@ -68,8 +68,21 @@
   <div class="flex ml-auto">
     <ul class="list-none p-0 m-0 flex">
       <li class="flex">
-        <a class="text-gray-900 font-medium inline-flex items-center cursor-pointer px-2 sm:px-3 hover:text-blue-500"><i
+        <a (click)="showSearch = !showSearch"
+          class="peer/search text-gray-900 font-medium inline-flex items-center cursor-pointer px-2 sm:px-3 hover:text-blue-500"><i
             class="pi pi-search mr-2 lg:mr-3 text-xl sm:text-base"></i><span class="hidden lg:inline">Search</span></a>
+        <div [ngClass]="showSearch ? 'block' : 'hidden'"
+          class="bg-white shadow-none lg:shadow-md lg:absolute w-full left-0 top-full px-6 py-0 lg:py-6 h-10rem lg:h-30rem z-10 border">
+          <div class="flex flex-col lg:flex-row lg:justify-between">
+            <div class="flex-1 flex">
+              <span class="p-input-icon-left w-full">
+                <i class="pi pi-search"></i>
+                <input class="border pr-4 pl-10 py-2 rounded-md w-full" type="text" placeholder="Search product..."
+                  [formControl]="searchCtrl" pInputText (keydown)="handleSearchProduct($event)" />
+              </span>
+            </div>
+          </div>
+        </div>
       </li>
 
       <li class="flex">

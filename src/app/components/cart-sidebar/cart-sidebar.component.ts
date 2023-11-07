@@ -36,8 +36,24 @@ export class CartSidebarComponent extends BaseClass implements OnInit {
     }
   }
 
-  public handleDeleteItem(id: number) {
-    const newCartItems = this.cartItems.filter((item) => item.id !== id);
-    this._coookie.set('cartItems', JSON.stringify(newCartItems));
+  public handleDeleteItem(prod: Product) {
+    this.cartItems = this.cartItems.filter(
+      (item) =>
+        !(
+          item.id === prod.id &&
+          item.productAttributes[0].id === prod.productAttributes[0].id
+        )
+    );
+    this._coookie.set('cartItems', JSON.stringify(this.cartItems));
+  }
+
+  public handleChangeQuantity(e: number = 0, prod: Product) {
+    this.cartItems = this.cartItems.map((item) =>
+      item.id !== prod.id &&
+      item.productAttributes[0].id === prod.productAttributes[0].id
+        ? { ...item, quantity: e }
+        : item
+    );
+    this._coookie.set('cartItems', JSON.stringify(this.cartItems));
   }
 }

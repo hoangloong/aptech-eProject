@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { MessageService } from 'primeng/api';
 import { BaseClass } from 'src/app/@common/base/base.class';
 import { ProductsService } from 'src/app/@common/services/products.service';
 import { Product, ProductAttribute } from 'src/app/@common/types/product.type';
@@ -8,6 +9,7 @@ import { Product, ProductAttribute } from 'src/app/@common/types/product.type';
   selector: 'app-product-details',
   templateUrl: './product-details.component.html',
   styleUrls: ['./product-details.component.scss'],
+  providers: [MessageService],
 })
 export class ProductDetailsComponent extends BaseClass implements OnInit {
   product!: Product;
@@ -19,7 +21,8 @@ export class ProductDetailsComponent extends BaseClass implements OnInit {
   rating = 0;
   constructor(
     private _activatedRoute: ActivatedRoute,
-    private _products: ProductsService
+    private _products: ProductsService,
+    private _msg: MessageService
   ) {
     super();
   }
@@ -71,12 +74,22 @@ export class ProductDetailsComponent extends BaseClass implements OnInit {
       productAttributes: this.currentAttribute ? [this.currentAttribute] : [],
     };
     const cartItems = JSON.parse(this._coookie.get('cartItems') || '[]');
-    if (cartItems.some((prod: Product) => prod.id === productSelected.id)) {
+    if (
+      cartItems.some(
+        (prod: Product) =>
+          prod.id === productSelected.id &&
+          prod.productAttributes[0].id ===
+            productSelected.productAttributes[0].id
+      )
+    ) {
       const newCartItems = cartItems.map((item: Product) =>
-        item.id === productSelected.id
+        item.id === productSelected.id &&
+        item.productAttributes[0].id === productSelected.productAttributes[0].id
           ? { ...item, quantity: item.quantity + this.quantity }
           : item
       );
+
+      console.log(newCartItems);
 
       this._coookie.set('cartItems', JSON.stringify(newCartItems));
     } else {
@@ -85,5 +98,11 @@ export class ProductDetailsComponent extends BaseClass implements OnInit {
         JSON.stringify([...cartItems, productSelected])
       );
     }
+
+    this._msg.add({
+      severity: 'success',
+      summary: 'Success',
+      detail: 'Add product to card successfully',
+    });
   }
 }

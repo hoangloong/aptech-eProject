@@ -6,9 +6,10 @@ import { FooterComponent } from './footer/footer.component';
 import { CartSidebarComponent } from './cart-sidebar/cart-sidebar.component';
 import { RouterModule } from '@angular/router';
 import { ProductListItemComponent } from './product-list-item/product-list-item.component';
-import { FormsModule } from '@angular/forms';
-import { FormReviewsComponent } from './form-reviews/form-reviews.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ReviewsComponent } from './reviews/reviews.component';
+import { FormReviewComponent } from './form-review/form-review.component';
+import { OrderSuccessComponent } from './order-success/order-success.component';
 
 @NgModule({
   declarations: [
@@ -16,8 +17,9 @@ import { ReviewsComponent } from './reviews/reviews.component';
     FooterComponent,
     CartSidebarComponent,
     ProductListItemComponent,
-    FormReviewsComponent,
     ReviewsComponent,
+    FormReviewComponent,
+    OrderSuccessComponent,
   ],
   imports: [
     CommonModule,
@@ -25,14 +27,16 @@ import { ReviewsComponent } from './reviews/reviews.component';
     RouterModule,
     PrimeModule,
     FormsModule,
+    ReactiveFormsModule,
   ],
   exports: [
     HeaderComponent,
     FooterComponent,
     CartSidebarComponent,
     ProductListItemComponent,
-    FormReviewsComponent,
     ReviewsComponent,
+    FormReviewComponent,
+    OrderSuccessComponent,
   ],
 })
 export class ComponentsModule {}

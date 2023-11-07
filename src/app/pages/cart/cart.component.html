@@ -1,1 +1,136 @@
-<p>cart works!</p>
+<div class="surface-section">
+  <app-order-success *ngIf="isFinish; else checkout"
+    [orderedItems]="finishOrderInformation.orderItems"></app-order-success>
+  <ng-template #checkout>
+    <div class="flex">
+      <div class="col-span-12 lg:col-span-6 h-full px-4 py-8 md:px-6 lg:px-8 w-full">
+        <ul class="flex list-none flex-wrap p-0 mb-6">
+          <li class="flex items-center">
+            <span [ngClass]="currentSteps === eCheckoutStep.INFORMATION ? 'text-green-500 font-bold' : 'text-500'"
+              class="text-500 mr-2 cursor-pointer" (click)="currentSteps = eCheckoutStep.INFORMATION">Information</span>
+            <i class="pi pi-chevron-right text-500 text-xs mr-2"></i>
+          </li>
+          <li class="flex items-center">
+            <span [ngClass]="currentSteps === eCheckoutStep.SHIPPING ? 'text-green-500 font-bold' : 'text-500'"
+              class="text-500 mr-2 cursor-pointer" (click)="currentSteps = eCheckoutStep.SHIPPING">Shipping</span>
+            <i class="pi pi-chevron-right text-500 text-xs mr-2"></i>
+          </li>
+          <li class="flex items-center">
+            <span [ngClass]="currentSteps === eCheckoutStep.PAYMENT ? 'text-green-500 font-bold' : 'text-500'"
+              class="text-500 mr-2 cursor-pointer" (click)="currentSteps = eCheckoutStep.PAYMENT">Payment</span>
+          </li>
+        </ul>
+        <div class="flex flex-col">
+          <div *ngIf="currentSteps === eCheckoutStep.INFORMATION" class="col-span-12 field mb-6"><span
+              class="text-900 text-2xl block font-medium mb-5">Contact
+              Information</span>
+            <form [formGroup]="formInformation">
+              <div class="col-span-12 lg:col-span-6 field mb-4">
+                <input formControlName="" id="name" placeholder="Name" type="text" class="border px-4 py-2 w-full round" pInputText>
+              </div>
+              <div class="col-span-12 lg:col-span-6 field mb-4">
+                <input id="lastname" placeholder="Last Name" type="text" class="border px-4 py-2 w-full round"
+                  pInputText>
+              </div>
+              <div class="col-span-12 lg:col-span-6 field mb-4">
+                <input id="name" placeholder="Phone" type="text" class="border px-4 py-2 w-full round" pInputText>
+              </div>
+              <div class="col-span-12 lg:col-span-6 field mb-4">
+                <input id="name" placeholder="Email" type="text" class="border px-4 py-2 w-full round" pInputText>
+              </div>
+
+              <div class="col-span-12 flex flex-col lg:flex-row justify-center items-center lg:justify-end mt-6 gap-4">
+                <button pButton pRipple label="Continue to Shipping" (click)="currentSteps = eCheckoutStep.SHIPPING"
+                  class="p-button-success px-3 py-2 text-white bg-green-500 w-full lg:w-auto"></button>
+              </div>
+            </form>
+          </div>
+
+          <div *ngIf="currentSteps === eCheckoutStep.SHIPPING" class="col-span-12 field mb-4">
+            <span class="text-900 text-2xl block font-medium mb-5">Shipping</span>
+            <p-dropdown styleClass="border w-full mb-4" [options]="[]" placeholder="Country / Region" optionlabel="name"
+              class="">
+            </p-dropdown>
+            <div class="col-span-12 field mb-4"><input id="address" placeholder="Address" type="text"
+                class="border px-4 py-2 w-full round" pInputText></div>
+            <div class="col-span-12 field mb-4"><input id="address2" placeholder="Apartment, suite, etc" type="text"
+                class="border px-4 py-2 w-full round" pInputText></div>
+            <div class="col-span-12 lg:col-span-6 field mb-4"><input id="pc" placeholder="Postal Code" type="text"
+                class="border px-4 py-2 w-full round" pInputText></div>
+            <div class="col-span-12 lg:col-span-6 field mb-4"><input id="city" placeholder="City" type="text"
+                class="border px-4 py-2 w-full round" pInputText></div>
+
+            <div class="col-span-12 flex flex-col lg:flex-row justify-center items-center lg:justify-end mt-6 gap-4">
+              <button pButton pRipple label="Return Information" class="w-full lg:w-auto px-3 py-2"
+                (click)="currentSteps = eCheckoutStep.INFORMATION"></button>
+              <button pButton pRipple label="Continue to Payment"
+                class="p-button-success px-3 py-2 text-white bg-green-500 w-full lg:w-auto"
+                (click)="currentSteps = eCheckoutStep.PAYMENT"></button>
+            </div>
+          </div>
+
+          <div *ngIf="currentSteps === eCheckoutStep.PAYMENT" class="col-span-12 field mb-4">
+            <span class="text-900 text-2xl block font-medium mb-5">Payment Method</span>
+            <!-- <p-dropdown styleClass="border w-full mb-4" [options]="[]" placeholder="Country / Region" optionlabel="name"
+            class="">
+          </p-dropdown> -->
+            <div class="col-span-12 field mb-4">Payment on delivery</div>
+
+            <div class="col-span-12 flex flex-col lg:flex-row justify-center items-center lg:justify-end mt-6 gap-4">
+              <button pButton pRipple label="Return Shipping" class="w-full lg:w-auto px-3 py-2"
+                (click)="currentSteps = eCheckoutStep.SHIPPING"></button>
+              <button pButton pRipple label="Submit"
+                class="p-button-success px-3 py-2 text-white bg-green-500 w-full lg:w-auto"
+                (click)="handleSubmitOrder()"></button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-span-12 lg:col-span-6 px-4 py-8 md:px-6 lg:px-8 surface-50 w-full">
+        <div class="border-bottom-1 pb-3 surface-border">
+          <span class="text-900 font-medium text-xl">Your Cart</span>
+        </div>
+        <ng-container *ngIf="cartItems.length;">
+          <div *ngFor="let item of cartItems"
+            class="flex flex-col lg:flex-row flex-wrap lg:items-center py-2 mt-3 border-b">
+            <img [src]="item.productImages[0].imgUrl" class="w-32 h-32 flex-shrink-0 mb-3 object-contain">
+            <div class="flex-auto lg:ml-3">
+              <div class="flex items-center justify-between mb-3">
+                <span class="text-900 font-medium">{{ item.name }}</span>
+                <span class="text-900 font-bold">{{item.productAttributes[0].discountPrice ||
+                  item.productAttributes[0].originPrice | currency}}</span>
+              </div>
+              <div class="text-600 text-sm mb-3">{{item.productAttributes[0].weight}}
+                {{item.productAttributes[0].weightUnit}}</div>
+              <div class="flex flex-auto justify-between items-center">
+                <p-inputNumber [showButtons]="true" buttonLayout="horizontal" spinnerMode="horizontal"
+                  [(ngModel)]="item.quantity" [min]="0" [max]="item.stock"
+                  (ngModelChange)="handleChangeQuantity($event, item)" inputStyleClass="w-[3rem] text-center py-2 px-1"
+                  decrementButtonClass="p-button-text text-blue-400 py-1 px-1"
+                  incrementButtonClass="p-button-text text-blue-400 py-1 px-1" incrementButtonIcon="pi pi-plus"
+                  decrementButtonIcon="pi pi-minus"
+                  class="border rounded-md ng-untouched ng-pristine ng-valid p-inputwrapper-filled">
+                </p-inputNumber>
+                <button pButton pRipple icon="pi pi-trash" (click)="handleDeleteItem(item)"
+                  class="p-button-rounded text-red-500 active:bg-red-50 p-button-text">
+                </button>
+              </div>
+            </div>
+          </div>
+        </ng-container>
+
+        <div class="py-2 mt-3">
+          <div class="flex justify-between items-center mb-3"><span class="text-900 font-medium">Subtotal</span><span
+              class="text-primary font-bold">{{getTotalAmount() | currency}}</span></div>
+          <div class="flex justify-between items-center mb-3"><span class="text-900 font-medium">Shipping</span><span
+              class="text-primary font-bold">Free</span></div>
+          <div class="flex justify-between items-center mb-3"><span class="text-900 font-medium">Tax</span><span
+              class="text-primary font-bold">Free</span></div>
+          <div class="flex justify-between items-center mb-3"><span class="text-900 font-bold">Total</span><span
+              class="text-900 font-medium text-xl">{{getTotalAmount() | currency}}</span></div>
+        </div>
+
+      </div>
+    </div>
+  </ng-template>
+</div>

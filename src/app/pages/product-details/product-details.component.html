@@ -55,6 +55,7 @@
       </p>
     </p-tabPanel><!---->
     <p-tabPanel header="Reviews">
+      <app-form-review></app-form-review>
       <ul class="list-none p-0 m-0">
         <ng-container *ngFor="let item of product.reviews">
           <app-reviews [review]="item"></app-reviews>
@@ -63,3 +64,4 @@
     </p-tabPanel>
   </p-tabView>
 </div>
+<p-toast></p-toast>
