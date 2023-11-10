@@ -1,86 +1,21 @@
 <div class="bg-white px-4 py-8 md:px-6 lg:px-8">
   <div class="flex flex-col md:flex-row md:items-center md:justify-between mb-5"><span
-      class="text-gray-900 text-3xl font-medium">CATEGORY TITLE</span>
+      class="text-gray-900 text-3xl font-medium">PRODUCTS</span>
     <ul class="list-none p-0 m-0 flex mt-3 md:mt-0">
-      <li><a
-          class="cursor-pointer text-gray-900 font-bold text-xl block hover:bg-gray-200 transition-all rounded-md px-3 py-2">NEW</a>
-      </li>
-      <li><a
-          class="cursor-pointer text-gray-600 font-medium text-xl block hover:bg-gray-200 transition-all rounded-md px-3 py-2">SALE</a>
-      </li>
-      <li><a
-          class="cursor-pointer text-gray-600 font-medium text-xl block hover:bg-gray-200 transition-all rounded-md px-3 py-2">POPULAR</a>
+      <li *ngFor="let type of types">
+        <a [ngClass]="selectedType === type ? 'text-gray-900 font-bold' : 'text-gray-600 font-medium'"
+          (click)="handleChangeType(type)"
+          class="cursor-pointer  text-xl block hover:bg-gray-200 transition-all rounded-md px-3 py-2">{{type}}</a>
       </li>
     </ul>
   </div>
   <div class="grid grid-cols-12 -mt-3 -ml-3 -mr-3">
-    <div class="col-span-12 md:col-span-6 lg:col-span-3">
-      <div class="p-2">
-        <div class="relative mb-3">
-          <img src="https://blocks.primeng.org/assets/images/blocks/ecommerce/productlist/product-list-8-1.png"
-            class="w-full">
-        </div>
-        <div class="bg-white pt-3 z-[1] relative transition-all">
-          <div class="text-center text-gray-500 font-medium text-xl mb-3">BRAND</div>
-          <div class="mb-3 text-center"><i class="pi pi-star-fill text-yellow-500 mr-1"></i><i
-              class="pi pi-star-fill text-yellow-500 mr-1"></i><i class="pi pi-star-fill text-yellow-500 mr-1"></i><i
-              class="pi pi-star-fill text-yellow-500 mr-1"></i><i class="pi pi-star-fill text-300"></i></div>
-          <div class="text-center text-gray-900 text-xl mb-3">Product Name</div>
-          <div class="text-center text-gray-900 font-medium text-xl mb-3">$50.00</div>
-        </div>
-      </div>
-    </div>
-    <div class="col-span-12 md:col-span-6 lg:col-span-3">
-      <div class="p-2">
-        <div class="relative mb-3"><!----><img
-            src="https://blocks.primeng.org/assets/images/blocks/ecommerce/productlist/product-list-8-2.png"
-            class="w-full"><!----></div>
-        <div class="bg-white pt-3 z-[1] relative transition-all">
-          <div class="text-center text-gray-500 font-medium text-xl mb-3">BRAND</div>
-          <div class="mb-3 text-center"><i class="pi pi-star-fill text-yellow-500 mr-1"></i><i
-              class="pi pi-star-fill text-yellow-500 mr-1"></i><i class="pi pi-star-fill text-yellow-500 mr-1"></i><i
-              class="pi pi-star-fill text-yellow-500 mr-1"></i><i class="pi pi-star-fill text-300"></i></div>
-          <div class="text-center text-gray-900 text-xl mb-3">Product Name</div>
-          <div class="text-center text-gray-900 font-medium text-xl mb-3">$50.00</div>
-        </div>
-        <div class="hidden">
-          <div class="flex justify-center items-center gap-2">
-            <p-button styleClass="rounded-[50%]" icon="pi pi-eye"></p-button>
-            <p-button styleClass="rounded-[50%]" icon="pi pi-cart-plus"></p-button>
-            <p-button styleClass="rounded-[50%]" icon="pi pi-heart"></p-button>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="col-span-12 md:col-span-6 lg:col-span-3">
-      <div class="p-2">
-        <div class="relative mb-3"><!----><img
-            src="https://blocks.primeng.org/assets/images/blocks/ecommerce/productlist/product-list-8-3.png"
-            class="w-full"><!----></div>
-        <div class="bg-white pt-3 z-[1] relative transition-all">
-          <div class="text-center text-gray-500 font-medium text-xl mb-3">BRAND</div>
-          <div class="mb-3 text-center"><i class="pi pi-star-fill text-yellow-500 mr-1"></i><i
-              class="pi pi-star-fill text-yellow-500 mr-1"></i><i class="pi pi-star-fill text-yellow-500 mr-1"></i><i
-              class="pi pi-star-fill text-yellow-500 mr-1"></i><i class="pi pi-star-fill text-300"></i></div>
-          <div class="text-center text-gray-900 text-xl mb-3">Product Name</div>
-          <div class="text-center text-gray-900 font-medium text-xl mb-3">$50.00</div>
-        </div>
-      </div>
-    </div>
-    <div class="col-span-12 md:col-span-6 lg:col-span-3">
-      <div class="p-2">
-        <div class="relative mb-3"><!----><img
-            src="https://blocks.primeng.org/assets/images/blocks/ecommerce/productlist/product-list-8-4.png"
-            class="w-full"><!----></div>
-        <div class="bg-white pt-3 z-[1] relative transition-all">
-          <div class="text-center text-gray-500 font-medium text-xl mb-3">BRAND</div>
-          <div class="mb-3 text-center"><i class="pi pi-star-fill text-yellow-500 mr-1"></i><i
-              class="pi pi-star-fill text-yellow-500 mr-1"></i><i class="pi pi-star-fill text-yellow-500 mr-1"></i><i
-              class="pi pi-star-fill text-yellow-500 mr-1"></i><i class="pi pi-star-fill text-300"></i></div>
-          <div class="text-center text-gray-900 text-xl mb-3">Product Name</div>
-          <div class="text-center text-gray-900 font-medium text-xl mb-3">$50.00</div>
-        </div>
-      </div>
-    </div>
+    <app-product-section-item *ngFor="let prod of products" class="col-span-12 md:col-span-6 lg:col-span-3"
+      [prod]="prod">
+    </app-product-section-item>
+  </div>
+  <div class="flex justify-center">
+    <button (click)="onClickViewAll()" pRipple class="px-8 py-2 rounded-md border-2 font-medium">View All
+      Product</button>
   </div>
 </div>

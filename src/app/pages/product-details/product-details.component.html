@@ -56,7 +56,7 @@
     </p-tabPanel><!---->
     <p-tabPanel header="Reviews">
       <app-form-review></app-form-review>
-      <ul class="list-none p-0 m-0">
+      <ul class="list-none p-0 mt-4">
         <ng-container *ngFor="let item of product.reviews">
           <app-reviews [review]="item"></app-reviews>
         </ng-container>

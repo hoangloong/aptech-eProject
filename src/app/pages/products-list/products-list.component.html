@@ -1,17 +1,31 @@
 <div class="bg-white px-4 py-8 md:px-6 lg:px-8">
   <div class="text-gray-900 font-bold text-3xl text-center">Products</div>
   <p-divider></p-divider>
+
+  <div class="card flex align-items-center gap-2 flex-wrap my-2">
+    <p-chip *ngFor="let item of filter, let idx = index"
+      [label]="item.key === 'Category' ? item.value : item.key + ': ' + item.value" [removable]="true"
+      (onRemove)="onRemoveFilter(item)"></p-chip>
+  </div>
+
   <div class="flex flex-wrap lg:flex-nowrap">
     <div class="col-fixed lg:col-2 mr-4 flex p-0 flex-col w-full lg:w-1/4">
       <p-accordion [multiple]="true">
         <p-accordionTab *ngFor="let item of categories" [selected]="selectedCategories.includes(item.id.toString())"
-          [header]="item.name + ' (' + (item.categories ? item.categories.length : 0) + ')'">
+          [header]="
+            item.name +
+            ' (' +
+            (item.categories ? item.categories.length : 0) +
+            ')'
+          ">
           <ul class="text-gray-500 text-base p-0 m-0 list-none">
             <li *ngFor="let sub of item.categories" class="hover:text-gray-900 cursor-pointer py-2 flex items-start">
               <p-checkbox name="group" class="mr-3 border-2 rounded-md" [value]="sub.id.toString()"
                 [(ngModel)]="selectedSubCategories" [inputId]="sub.id.toString()"
                 (onChange)="handleChangeSelectedCategories()"></p-checkbox>
-              <label class="cursor-pointer" [for]="sub.id.toString()">{{ sub.name }}</label>
+              <label class="cursor-pointer" [for]="sub.id.toString()">{{
+                sub.name
+                }}</label>
             </li>
           </ul>
         </p-accordionTab>
@@ -20,29 +34,31 @@
         </p-accordionTab>
         <p-accordionTab header="Sort by">
           <ul class="text-gray-500 text-base p-0 m-0 list-none">
-            <li class="hover:text-gray-900 cursor-pointer py-2">Newest Items</li>
+            <li class="hover:text-gray-900 cursor-pointer py-2">
+              Newest Items
+            </li>
             <li class="hover:text-gray-900 cursor-pointer py-2">Best Seller</li>
-            <li class="hover:text-gray-900 cursor-pointer py-2">Lowest Price</li>
-            <li class="hover:text-gray-900 cursor-pointer py-2">Highest Price</li>
+            <li class="hover:text-gray-900 cursor-pointer py-2">
+              Lowest Price
+            </li>
+            <li class="hover:text-gray-900 cursor-pointer py-2">
+              Highest Price
+            </li>
           </ul>
         </p-accordionTab>
       </p-accordion>
     </div>
-    <div class="w-full bg-white mt-3 lg:mt-0" style="min-height: 25rem;">
-
+    <div class="w-full bg-white mt-3 lg:mt-0" style="min-height: 25rem">
       <div class="grid grid-cols-12 m-0 p-0">
-        <ng-container *ngIf="products.length;else isEmpty">
-          <div *ngFor="let prod of products" class="col-span-12 md:col-span-6 lg:col-span-4 px-3">
+        <ng-container *ngIf="products.length; else isEmpty">
+          <div *ngFor="let prod of products" class="col-span-12 md:col-span-6 lg:col-span-4 px-3 py-2">
             <app-product-list-item [product]="prod"></app-product-list-item>
           </div>
         </ng-container>
         <ng-template #isEmpty>
-          <div class="col-span-12 text-center">
-            Not found products
-          </div>
+          <div class="col-span-12 text-center">Not found products</div>
         </ng-template>
       </div>
-
     </div>
   </div>
 </div>

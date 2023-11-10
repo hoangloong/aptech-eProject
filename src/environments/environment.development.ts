@@ -1,3 +1,3 @@
 export const environment = {
-  apiUrl: 'https://aptech.longth.dev/',
+  apiUrl: 'http://127.0.0.1:3000/',
 };

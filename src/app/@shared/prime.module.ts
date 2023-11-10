@@ -20,6 +20,7 @@ import { DropdownModule } from 'primeng/dropdown';
 import { RatingModule } from 'primeng/rating';
 import { TagModule } from 'primeng/tag';
 import { ToastModule } from 'primeng/toast';
+import { ChipModule } from 'primeng/chip';
 
 const primeModules = [
   StyleClassModule,
@@ -41,6 +42,7 @@ const primeModules = [
   RatingModule,
   TagModule,
   ToastModule,
+  ChipModule,
 ];
 
 @NgModule({

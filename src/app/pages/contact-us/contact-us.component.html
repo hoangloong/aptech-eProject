@@ -1,27 +1,51 @@
 <div class="bg-white px-4 py-8 md:px-6 lg:px-8">
   <div class="grid grid-cols-12">
     <div class="col-span-12 md:col-span-6">
-      <div class="p-fluid pr-0 md:pr-6">
+      <form [formGroup]="formContact" class="p-fluid pr-0 md:pr-6" (ngSubmit)="handleSubmit()">
         <div class="flex flex-col gap-2 mb-3">
           <label for="name" class="font-medium text-gray-500">Name</label>
-          <input id="name" type="text" pInputText class="w-full px-4 py-3 border">
+          <input formControlName="full_name" id="name" type="text"
+            [ngClass]="formContact.controls.full_name.touched && formContact.controls.full_name.invalid ? 'border-red-500' : ''"
+            pInputText class="w-full px-4 py-3 border">
+          <span *ngIf="formContact.controls.full_name.touched && formContact.controls.full_name.invalid"
+            class="text-sm text-red-500">Name is required!</span>
         </div>
         <div class="flex flex-col gap-2 mb-3">
           <label for="email" class="font-medium text-gray-500">Email</label>
-          <input id="email" type="text" pInputText class="w-full px-4 py-3 border">
+          <input formControlName="email" id="email" type="text"
+            [ngClass]="formContact.controls.email.touched && formContact.controls.email.invalid ? 'border-red-500' : ''"
+            pInputText class="w-full px-4 py-3 border">
+          <span *ngIf="formContact.controls.email.touched && formContact.controls.email.invalid"
+            class="text-sm text-red-500">Invalid email address!</span>
         </div>
         <div class="flex flex-col gap-2 mb-3">
-          <label for="company" class="font-medium text-gray-500">Company</label>
-          <input id="company" type="text" pInputText class="w-full px-4 py-3 border">
+          <label for="phone" class="font-medium text-gray-500">Phone</label>
+          <input formControlName="phone" id="phone" type="text"
+            [ngClass]="formContact.controls.phone.touched && formContact.controls.phone.invalid ? 'border-red-500' : ''"
+            pInputText class="w-full px-4 py-3 border">
+          <span *ngIf="formContact.controls.phone.touched && formContact.controls.phone.invalid"
+            class="text-sm text-red-500">Phone is required!</span>
+        </div>
+        <div class="flex flex-col gap-2 mb-3">
+          <label for="address" class="font-medium text-gray-500">Address</label>
+          <input formControlName="address" id="address" type="text"
+            [ngClass]="formContact.controls.address.touched && formContact.controls.address.invalid ? 'border-red-500' : ''"
+            pInputText class="w-full px-4 py-3 border">
+          <span *ngIf="formContact.controls.address.touched && formContact.controls.address.invalid"
+            class="text-sm text-red-500">Address is required!</span>
         </div>
         <div class="flex flex-col gap-2 mb-3">
           <label for="message" class="font-medium text-gray-500">Message</label>
-          <textarea id="message" pInputTextarea class="w-full px-4 py-3 border" rows="6"
+          <textarea formControlName="message" id="message" pInputTextarea
+            [ngClass]="formContact.controls.message.touched && formContact.controls.message.invalid ? 'border-red-500' : ''"
+            class="w-full px-4 py-3 border" rows="6"
             style="height: 176px; overflow: hidden; resize: vertical;"></textarea>
+          <span *ngIf="formContact.controls.message.touched && formContact.controls.message.invalid"
+            class="text-sm text-red-500">Message is required!</span>
         </div>
         <button pButton pRipple label="Send Message" icon="pi pi-send" class="text-white bg-blue-500 px-4 py-3">
         </button>
-      </div>
+      </form>
     </div>
     <div class="col-span-12 md:col-span-6 bg-no-repeat bg-right-bottom"
       style="background-image: url('https://blocks.primeng.org/assets/images/blocks/contact/contact-1.png');">
@@ -31,8 +55,8 @@
       </div>
       <ul class="list-none p-0 m-0 mt-6 text-gray-500">
         <li class="flex items-center mb-3"><i class="pi pi-phone mr-2"></i><span>+123456789</span></li>
-        <li class="flex items-center mb-3"><i class="pi pi-twitter mr-2"></i><span>@prime_ng</span></li>
-        <li class="flex items-center"><i class="pi pi-inbox mr-2"></i><span>contact@primetek.com.tr</span></li>
+        <li class="flex items-center mb-3"><i class="pi pi-twitter mr-2"></i><span>@maru_dryfruits</span></li>
+        <li class="flex items-center"><i class="pi pi-inbox mr-2"></i><span>maru_dryfruits@maru.com</span></li>
       </ul>
     </div>
   </div>

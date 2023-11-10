@@ -10,6 +10,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ReviewsComponent } from './reviews/reviews.component';
 import { FormReviewComponent } from './form-review/form-review.component';
 import { OrderSuccessComponent } from './order-success/order-success.component';
+import { ProductSectionItemComponent } from './product-section-item/product-section-item.component';
 
 @NgModule({
   declarations: [
@@ -20,6 +21,7 @@ import { OrderSuccessComponent } from './order-success/order-success.component';
     ReviewsComponent,
     FormReviewComponent,
     OrderSuccessComponent,
+    ProductSectionItemComponent,
   ],
   imports: [
     CommonModule,
@@ -37,6 +39,7 @@ import { OrderSuccessComponent } from './order-success/order-success.component';
     ReviewsComponent,
     FormReviewComponent,
     OrderSuccessComponent,
+    ProductSectionItemComponent,
   ],
 })
 export class ComponentsModule {}

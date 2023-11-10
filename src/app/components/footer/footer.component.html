@@ -1,13 +1,15 @@
 <div class="bg-[#f9fafb] px-4 py-8 md:px-6 lg:px-8"><span
-    class="text-gray-900 text-3xl font-medium block text-center lg:text-left">Get 25% Discount Today!</span><span
-    class="text-gray-500 text-2xl block mt-4 text-center lg:text-left">Sign up our email list and know all about new
+    class="text-gray-900 text-3xl font-medium block text-center lg:text-left">Get 25% Discount Today!</span>
+  <span class="text-gray-500 text-2xl block mt-4 text-center lg:text-left">Sign up our email list and know all about new
     collections of Peak</span>
   <div class="mt-4 mx-auto lg:mx-0" style="max-width: 38rem;">
     <div class="p-inputgroup">
-      <input type="text" pInputText placeholder="Enter your email address" class="p-inputtext border px-3">
+      <input [formControl]="email" type="text" pInputText placeholder="Enter your email address"
+        class="p-inputtext border px-3">
       <button type="button" pButton pRipple label="Subscribe"
-        class="bg-gray-900 text-white px-5 py-3 border-none p-button"></button>
+        class="bg-gray-900 text-white px-5 py-3 border-none p-button" (click)="handleClickSubscribe()"></button>
     </div>
+    <span *ngIf="email.touched && email.invalid" class="text-red-500 text-sm">Invalid email address!</span>
   </div>
   <p-divider layout="horizontal">
   </p-divider>
@@ -25,21 +27,26 @@
         <a class="cursor-pointer">
           <i class="pi pi-google bg-gray-900 p-1 text-sm rounded-[50%] text-white leading-4"></i></a>
       </div>
-      <span class="text-gray-500 block mt-4"><i class="pi pi-phone mr-2"></i>1234 / 12 34 567</span><a
+      <span class="text-gray-500 block mt-4">
+        <i class="pi pi-phone mr-2"></i>1234 / 12 34 567</span>
+      <a routerLink="/contact-us"
         class="text-gray-500 block mt-4 cursor-pointer hover:text-gray-900 transition-all select-none w-8rem"><i
           class="pi pi-map-marker mr-2"></i>Contact Us</a>
     </div>
     <div class="col-span-12 sm:col-span-6 md:col-span-4 lg:col-span-3 mt-4 flex flex-col"><span
-        class="text-gray-900 text-xl font-medium block">Company</span>
+        class="text-gray-900 text-xl font-medium block">Categories</span>
       <ul class="list-none p-0">
-        <li><a class="text-gray-500 hover:text-gray-900 transition-all cursor-pointer mt-3 block">About
-            Peak</a></li>
-        <li><a class="text-gray-500 hover:text-gray-900 transition-all cursor-pointer mt-3 block">Factories</a>
+        <li><a [routerLink]="['/products']" [queryParams]="{categories: 1, paging: 0, page_size: 9}"
+            class="text-gray-500 hover:text-gray-900 transition-all cursor-pointer mt-3 block">Dry Fruits</a></li>
+        <li><a [routerLink]="['/products']" [queryParams]="{categories: 2, paging: 0, page_size: 9}"
+            class="text-gray-500 hover:text-gray-900 transition-all cursor-pointer mt-3 block">Seeds</a>
         </li>
-        <li><a class="text-gray-500 hover:text-gray-900 transition-all cursor-pointer mt-3 block">Careers</a>
+        <li><a [routerLink]="['/products']" [queryParams]="{categories: 3, paging: 0, page_size: 9}"
+            class="text-gray-500 hover:text-gray-900 transition-all cursor-pointer mt-3 block">Dates</a>
         </li>
-        <li><a class="text-gray-500 hover:text-gray-900 transition-all cursor-pointer mt-3 block">Environmental
-            Initiatives</a></li>
+        <li><a [routerLink]="['/products']" [queryParams]="{categories: 4, paging: 0, page_size: 9}"
+            class="text-gray-500 hover:text-gray-900 transition-all cursor-pointer mt-3 block">Nuts & Berries</a>
+        </li>
       </ul>
     </div>
     <div class="col-span-12 sm:col-span-6 md:col-span-4 lg:col-span-3 mt-4 flex flex-col"><span
@@ -47,9 +54,7 @@
       <ul class="list-none p-0">
         <li><a class="text-gray-500 hover:text-gray-900 transition-all cursor-pointer mt-3 block">Manage
             Account</a></li>
-        <li><a class="text-gray-500 hover:text-gray-900 transition-all cursor-pointer mt-3 block">Saved
-            Items</a></li>
-        <li><a class="text-gray-500 hover:text-gray-900 transition-all cursor-pointer mt-3 block">My
+        <li><a routerLink="/cart" class="text-gray-500 hover:text-gray-900 transition-all cursor-pointer mt-3 block">My
             Cart</a></li>
         <li><a class="text-gray-500 hover:text-gray-900 transition-all cursor-pointer mt-3 block">Wishlist</a>
         </li>
