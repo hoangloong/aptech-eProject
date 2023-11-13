@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { PaginatorState } from 'primeng/paginator';
 import {
   ProductQueryParams,
   ProductsService,
@@ -18,6 +19,7 @@ export class ProductsListComponent implements OnInit {
   selectedSubCategories: string[] = [];
   products: Product[] = [];
   filter: any = [];
+  total = 0;
 
   constructor(
     private _activatedRoute: ActivatedRoute,
@@ -81,7 +83,8 @@ export class ProductsListComponent implements OnInit {
   getProducts(params: ProductQueryParams) {
     this._products.getProducts(params).subscribe({
       next: (res) => {
-        this.products = res;
+        this.products = res.data;
+        this.total = res.total;
       },
     });
   }
@@ -92,6 +95,7 @@ export class ProductsListComponent implements OnInit {
       queryParams: {
         categories: this.selectedCategories.toString(),
         sub_categories: this.selectedSubCategories.toString(),
+        paging: 0,
       },
       queryParamsHandling: 'merge',
     });
@@ -132,6 +136,17 @@ export class ProductsListComponent implements OnInit {
       relativeTo: this._activatedRoute,
       queryParams: {
         ...queryParams,
+        paging: 0,
+      },
+      queryParamsHandling: 'merge',
+    });
+  }
+
+  onPageChange(e: PaginatorState) {
+    this._router.navigate([], {
+      relativeTo: this._activatedRoute,
+      queryParams: {
+        paging: e.page,
       },
       queryParamsHandling: 'merge',
     });

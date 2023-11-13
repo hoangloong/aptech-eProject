@@ -21,6 +21,7 @@ import { RatingModule } from 'primeng/rating';
 import { TagModule } from 'primeng/tag';
 import { ToastModule } from 'primeng/toast';
 import { ChipModule } from 'primeng/chip';
+import { PaginatorModule } from 'primeng/paginator';
 
 const primeModules = [
   StyleClassModule,
@@ -43,6 +44,7 @@ const primeModules = [
   TagModule,
   ToastModule,
   ChipModule,
+  PaginatorModule,
 ];
 
 @NgModule({

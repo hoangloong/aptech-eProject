@@ -1,6 +1,8 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { Router } from '@angular/router';
+import { MessageService } from 'primeng/api';
+import { WishlistService } from 'src/app/@common/services/wishlist.service';
 import { Product } from 'src/app/@common/types/product.type';
 
 @Component({
@@ -11,8 +13,22 @@ import { Product } from 'src/app/@common/types/product.type';
 export class ProductSectionItemComponent implements OnInit {
   @Input({ required: true }) prod!: Product;
   rating = new FormControl(0);
+  wishlist: Product[] = [];
+  constructor(
+    private _router: Router,
+    private _wishlist: WishlistService,
+    private _msg: MessageService
+  ) {
+    _wishlist.wishlist$.subscribe((res) => (this.wishlist = res));
+  }
 
-  constructor(private _router: Router) {}
+  get isDiscount() {
+    return this.prod.productAttributes.some((item) => item.discountPercent);
+  }
+
+  get isExistWishlist() {
+    return this.wishlist.some((item) => item.id === this.prod.id);
+  }
 
   ngOnInit(): void {
     this.rating.setValue(this.calcRate(this.prod));
@@ -47,5 +63,23 @@ export class ProductSectionItemComponent implements OnInit {
 
   navigateToDetails() {
     this._router.navigateByUrl(`/products/${this.prod.id}`);
+  }
+
+  handleClickFavourite() {
+    if (this.isExistWishlist) {
+      this._wishlist.deleteItem(this.prod.id);
+      this._msg.add({
+        severity: 'success',
+        summary: 'Removed',
+        detail: 'Removed product from wishlist successfully',
+      });
+    } else {
+      this._wishlist.addToWishlist(this.prod);
+      this._msg.add({
+        severity: 'success',
+        summary: 'Success',
+        detail: 'Add product to wishlist successfully',
+      });
+    }
   }
 }

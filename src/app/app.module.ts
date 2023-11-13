@@ -13,6 +13,7 @@ import { LayoutsComponent } from './@common/layouts/layouts.component';
 import { ErrorHandlingInterceptor } from './@common/interceptors/error-handling';
 import { PrimeModule } from './@shared/prime.module';
 import { MessageService } from 'primeng/api';
+import { SplashScreenService } from './@common/services/splash-screen.services';
 
 @NgModule({
   declarations: [AppComponent, LayoutsComponent],
@@ -27,6 +28,7 @@ import { MessageService } from 'primeng/api';
   ],
   providers: [
     MessageService,
+    SplashScreenService,
     CookieService,
     {
       provide: HTTP_INTERCEPTORS,

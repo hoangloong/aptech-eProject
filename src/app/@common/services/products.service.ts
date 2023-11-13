@@ -16,10 +16,15 @@ export interface ProductQueryParams {
 export class ProductsService {
   constructor(private _http: HttpClient) {}
 
-  getProducts(queryParams: ProductQueryParams): Observable<Product[]> {
-    return this._http.get<Product[]>(`${environment.apiUrl}products`, {
-      params: { ...queryParams },
-    });
+  getProducts(
+    queryParams: ProductQueryParams
+  ): Observable<{ data: Product[]; total: number }> {
+    return this._http.get<{ data: Product[]; total: number }>(
+      `${environment.apiUrl}products`,
+      {
+        params: { ...queryParams },
+      }
+    );
   }
 
   getProductById(id: number) {

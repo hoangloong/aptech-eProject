@@ -45,7 +45,7 @@ export class ProductsSectionComponent extends BaseClass implements OnInit {
 
     this._products.getProducts(query).subscribe({
       next: (res) => {
-        this.products = res;
+        this.products = res.data;
       },
     });
   }

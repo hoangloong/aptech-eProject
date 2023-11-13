@@ -12,6 +12,7 @@ import { ProductDetailsComponent } from './pages/product-details/product-details
 import { LayoutsComponent } from './@common/layouts/layouts.component';
 import { KnowComponent } from './pages/know/know.component';
 import { CartComponent } from './pages/cart/cart.component';
+import { WishlistComponent } from './pages/wishlist/wishlist.component';
 
 const routes: Routes = [
   {
@@ -28,9 +29,10 @@ const routes: Routes = [
       { path: 'login', component: LoginComponent },
       { path: 'register', component: RegisterComponent },
       { path: 'cart', component: CartComponent },
+      { path: 'wishlist', component: WishlistComponent },
     ],
   },
-  { path: 'server-error', component: RegisterComponent },
+  // { path: 'server-error', component: RegisterComponent },
 ];
 
 @NgModule({

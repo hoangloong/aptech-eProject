@@ -19,6 +19,7 @@ import { GoogleMapsModule } from '@angular/google-maps';
 import { RouterModule } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ComponentsModule } from '../components/components.module';
+import { WishlistComponent } from './wishlist/wishlist.component';
 
 @NgModule({
   declarations: [
@@ -35,6 +36,7 @@ import { ComponentsModule } from '../components/components.module';
     ContactUsComponent,
     ProductsListComponent,
     ProductDetailsComponent,
+    WishlistComponent,
   ],
   imports: [
     CommonModule,

@@ -1,0 +1,11 @@
+<div class="w-full px-4 py-3 flex flex-wrap justify-start">
+  <div *ngFor="let prod of wishlist" class="w-80 px-4 py-3 border rounded-md flex">
+    <div class="w-28 h-40">
+      <img [src]="prod.productImages[0].imgUrl">
+    </div>
+    <div>
+      <div>{{prod.name}}</div>
+    </div>
+  </div>
+</div>
+<p-toast></p-toast>

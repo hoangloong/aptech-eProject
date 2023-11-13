@@ -59,6 +59,9 @@
           <div class="col-span-12 text-center">Not found products</div>
         </ng-template>
       </div>
+      <div class="card flex justify-center">
+        <p-paginator (onPageChange)="onPageChange($event)" [totalRecords]="total" [rows]="9"></p-paginator>
+      </div>
     </div>
   </div>
 </div>

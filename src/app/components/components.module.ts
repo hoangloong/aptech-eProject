@@ -11,6 +11,7 @@ import { ReviewsComponent } from './reviews/reviews.component';
 import { FormReviewComponent } from './form-review/form-review.component';
 import { OrderSuccessComponent } from './order-success/order-success.component';
 import { ProductSectionItemComponent } from './product-section-item/product-section-item.component';
+import { SplashScreenComponent } from './splash-screen/splash-screen.component';
 
 @NgModule({
   declarations: [
@@ -22,6 +23,7 @@ import { ProductSectionItemComponent } from './product-section-item/product-sect
     FormReviewComponent,
     OrderSuccessComponent,
     ProductSectionItemComponent,
+    SplashScreenComponent,
   ],
   imports: [
     CommonModule,
@@ -40,6 +42,7 @@ import { ProductSectionItemComponent } from './product-section-item/product-sect
     FormReviewComponent,
     OrderSuccessComponent,
     ProductSectionItemComponent,
+    SplashScreenComponent,
   ],
 })
 export class ComponentsModule {}
