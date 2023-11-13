@@ -21,7 +21,7 @@
           <span class="text-900 font-medium">Quantity:
             {{item.quantity}}</span>
         </div><span class="text-900 font-medium text-lg ml-auto">{{item.productAttributes[0].discountPrice ||
-          item.productAttributes[0].originPrice | currency}}</span>
+          item.productAttributes[0].originPrice | currency:'INR':'symbol-narrow'}}</span>
       </li>
     </ul>
   </div>
@@ -38,13 +38,13 @@
       <ul class="list-none p-0 m-0 w-full">
         <li class="mb-3"><span class="font-medium text-900">Summary</span></li>
         <li class="flex justify-between mb-3"><span class="text-900">Subtotal</span><span
-            class="text-900 font-medium text-lg">{{getTotalAmount() | currency}}</span></li>
+            class="text-900 font-medium text-lg">{{getTotalAmount() | currency:'INR':'symbol-narrow'}}</span></li>
         <li class="flex justify-between mb-3"><span class="text-900">Shipping</span><span
             class="text-900 font-medium text-lg">Free</span></li>
         <li class="flex justify-between mb-3"><span class="text-900">Tax</span><span
             class="text-900 font-medium text-lg">Free</span></li>
         <li class="flex justify-between border-t py-3"><span class="text-900 font-medium">Total</span><span
-            class="text-900 font-bold text-lg">{{getTotalAmount() | currency}}</span></li>
+            class="text-900 font-bold text-lg">{{getTotalAmount() | currency:'INR':'symbol-narrow'}}</span></li>
       </ul>
     </div>
   </div>

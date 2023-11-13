@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { PaginatorState } from 'primeng/paginator';
+import { finalize } from 'rxjs';
 import {
   ProductQueryParams,
   ProductsService,
@@ -20,6 +21,7 @@ export class ProductsListComponent implements OnInit {
   products: Product[] = [];
   filter: any = [];
   total = 0;
+  fetchingData = false;
 
   constructor(
     private _activatedRoute: ActivatedRoute,
@@ -81,12 +83,16 @@ export class ProductsListComponent implements OnInit {
   }
 
   getProducts(params: ProductQueryParams) {
-    this._products.getProducts(params).subscribe({
-      next: (res) => {
-        this.products = res.data;
-        this.total = res.total;
-      },
-    });
+    this.fetchingData = true;
+    this._products
+      .getProducts(params)
+      .pipe(finalize(() => (this.fetchingData = false)))
+      .subscribe({
+        next: (res) => {
+          this.products = res.data;
+          this.total = res.total;
+        },
+      });
   }
 
   handleChangeSelectedCategories() {

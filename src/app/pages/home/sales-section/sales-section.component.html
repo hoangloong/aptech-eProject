@@ -4,65 +4,31 @@
     <div class="flex items-center flex-auto mt-5 sm:mt-0">
       <div class="bg-indigo-50 w-[4rem] mx-2" style="height: 7px;"></div>
       <div class="flex items-center p-2 bg-indigo-50 rounded-md"><span class="text-indigo-500 text-xl font-medium">Ends
-          in</span><span class="block bg-indigo-500 text-white rounded-md px-3 py-2 ml-2">12:30:00</span></div>
+          in</span><span class="block bg-indigo-500 text-white rounded-md px-3 py-2 ml-2">{{timeRemains['days']}} days
+          {{timeRemains['hours']}}:{{timeRemains['minutes']}}:{{timeRemains['seconds']}}</span></div>
       <div class="bg-indigo-50 ml-2 flex-auto" style="height: 7px;"></div>
     </div>
   </div>
   <div class="grid grid-cols-12 -mt-3 -ml-3 -mr-3">
-    <div class="col-span-12 md:col-span-6 lg:col-span-3 mb-5 lg:mb-0">
+    <div *ngFor="let prod of products" class="col-span-12 md:col-span-6 lg:col-span-3 mb-5 lg:mb-0">
       <div class="p-2">
-        <div class="font-medium mb-3">SUBTITLE</div>
-        <div class="mb-3"><span class="line-through mr-3 text-gray-600 text-xl">120.00</span><span
-            class="font-medium text-xl text-pink-500">80.00</span></div><img
-          src="https://blocks.primeng.org/assets/images/blocks/ecommerce/promosection/promo-section-4-1.jpg"
-          class="block mb-3 w-full">
+        <div class="font-medium mb-3 uppercase flex items-center gap-3">{{prod.name}} <i
+            class="pi pi-fw pi-arrow-right text-2xl ml-2 hover:text-green-500 cursor-pointer"
+            [routerLink]="'/products/' + prod.id"></i>
+        </div>
+        <div class="mb-3">
+          <span class="line-through mr-3 text-gray-600 text-xl">{{getMaxOriginPrice(prod) |
+            currency:'INR':'symbol-narrow'}}</span>
+          <span class="block font-medium text-xl text-pink-500">{{getMinPrice(prod) |
+            currency:'INR':'symbol-narrow'}} - {{getMaxPrice(prod) |
+            currency:'INR':'symbol-narrow'}}</span>
+        </div>
+        <img [src]="prod.productImages[0].imgUrl" class="block mb-3 w-full">
         <div class="mb-4 bg-gray-300 rounded-md overflow-hidden" style="height: .5rem;">
           <div class="bg-gray-900 w-6 h-full"></div>
         </div>
-        <div class="flex items-center justify-between"><span class="text-gray-600">Sold: 35</span><span
-            class="text-gray-900 font-medium">Available: 50</span></div>
-      </div>
-    </div>
-    <div class="col-span-12 md:col-span-6 lg:col-span-3 mb-5 lg:mb-0">
-      <div class="p-2">
-        <div class="font-medium mb-3">SUBTITLE</div>
-        <div class="mb-3"><span class="line-through mr-3 text-gray-600 text-xl">56.00</span><span
-            class="font-medium text-xl text-pink-500">39.00</span></div><img
-          src="https://blocks.primeng.org/assets/images/blocks/ecommerce/promosection/promo-section-4-2.jpg"
-          class="block mb-3 w-full">
-        <div class="mb-4 bg-gray-300 rounded-md overflow-hidden" style="height: .5rem;">
-          <div class="bg-gray-900 w-6 h-full"></div>
-        </div>
-        <div class="flex items-center justify-between"><span class="text-gray-600">Sold: 35</span><span
-            class="text-gray-900 font-medium">Available: 50</span></div>
-      </div>
-    </div>
-    <div class="col-span-12 md:col-span-6 lg:col-span-3 mb-5 md:mb-0">
-      <div class="p-2">
-        <div class="font-medium mb-3">SUBTITLE</div>
-        <div class="mb-3"><span class="line-through mr-3 text-gray-600 text-xl">96.00</span><span
-            class="font-medium text-xl text-pink-500">45.00</span></div><img
-          src="https://blocks.primeng.org/assets/images/blocks/ecommerce/promosection/promo-section-4-3.jpg"
-          class="block mb-3 w-full">
-        <div class="mb-4 bg-gray-300 rounded-md overflow-hidden" style="height: .5rem;">
-          <div class="bg-gray-900 w-6 h-full"></div>
-        </div>
-        <div class="flex items-center justify-between"><span class="text-gray-600">Sold: 35</span><span
-            class="text-gray-900 font-medium">Available: 50</span></div>
-      </div>
-    </div>
-    <div class="col-span-12 md:col-span-6 lg:col-span-3">
-      <div class="p-2">
-        <div class="font-medium mb-3">SUBTITLE</div>
-        <div class="mb-3"><span class="line-through mr-3 text-gray-600 text-xl">84.00</span><span
-            class="font-medium text-xl text-pink-500">72.00</span></div><img
-          src="https://blocks.primeng.org/assets/images/blocks/ecommerce/promosection/promo-section-4-4.jpg"
-          class="block mb-3 w-full">
-        <div class="mb-4 bg-gray-300 rounded-md overflow-hidden" style="height: .5rem;">
-          <div class="bg-gray-900 w-6 h-full"></div>
-        </div>
-        <div class="flex items-center justify-between"><span class="text-gray-600">Sold: 35</span><span
-            class="text-gray-900 font-medium">Available: 50</span></div>
+        <div class="flex items-center justify-between"><span class="text-gray-600">Sold: 1</span><span
+            class="text-gray-900 font-medium">Available: {{prod.stock}}</span></div>
       </div>
     </div>
   </div>

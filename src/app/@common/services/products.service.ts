@@ -36,4 +36,11 @@ export class ProductsService {
       ...body,
     });
   }
+
+  getDealOfWeek(): Observable<{ data: Product[] }> {
+    return this._http.post<{ data: Product[] }>(
+      `${environment.apiUrl}products/deal-of-week`,
+      {}
+    );
+  }
 }
