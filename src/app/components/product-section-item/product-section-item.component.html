@@ -23,11 +23,11 @@
       <div class="mb-3 text-center">
         <p-rating [readonly]="true" [cancel]="false" [stars]="5" [formControl]="rating"></p-rating>
       </div>
-      <div class="text-center text-gray-900 font-medium text-xl mb-3">{{getMinPrice(prod) | currency}} -
-        {{getMaxPrice(prod) | currency}}
+      <div class="text-center text-gray-900 font-medium text-xl mb-3">{{getMinPrice(prod) | currency:'INR':'symbol-narrow'}} -
+        {{getMaxPrice(prod) | currency:'INR':'symbol-narrow'}}
       </div>
       <div *ngIf="isDiscount" class="text-center line-through text-gray-900 font-medium text-xl mb-3">
-        {{getMaxOriginPrice(prod) | currency}}
+        {{getMaxOriginPrice(prod) | currency:'INR':'symbol-narrow'}}
       </div>
     </div>
   </div>

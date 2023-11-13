@@ -98,7 +98,7 @@
               <div class="flex items-center justify-between mb-3">
                 <span class="text-900 font-medium">{{ item.name }}</span>
                 <span class="text-900 font-bold">{{item.productAttributes[0].discountPrice ||
-                  item.productAttributes[0].originPrice | currency}}</span>
+                  item.productAttributes[0].originPrice | currency:'INR':'symbol-narrow'}}</span>
               </div>
               <div class="text-600 text-sm mb-3">{{item.productAttributes[0].weight}}
                 {{item.productAttributes[0].weightUnit}}</div>
@@ -121,13 +121,13 @@
 
         <div class="py-2 mt-3">
           <div class="flex justify-between items-center mb-3"><span class="text-900 font-medium">Subtotal</span><span
-              class="text-primary font-bold">{{getTotalAmount() | currency}}</span></div>
+              class="text-primary font-bold">{{getTotalAmount() | currency:'INR':'symbol-narrow'}}</span></div>
           <div class="flex justify-between items-center mb-3"><span class="text-900 font-medium">Shipping</span><span
               class="text-primary font-bold">Free</span></div>
           <div class="flex justify-between items-center mb-3"><span class="text-900 font-medium">Tax</span><span
               class="text-primary font-bold">Free</span></div>
           <div class="flex justify-between items-center mb-3"><span class="text-900 font-bold">Total</span><span
-              class="text-900 font-medium text-xl">{{getTotalAmount() | currency}}</span></div>
+              class="text-900 font-medium text-xl">{{getTotalAmount() | currency:'INR':'symbol-narrow'}}</span></div>
         </div>
 
       </div>

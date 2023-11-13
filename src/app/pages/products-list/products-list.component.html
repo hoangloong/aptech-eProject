@@ -49,7 +49,7 @@
       </p-accordion>
     </div>
     <div class="w-full bg-white mt-3 lg:mt-0" style="min-height: 25rem">
-      <div class="grid grid-cols-12 m-0 p-0">
+      <div *ngIf="!fetchingData; else loading" class="grid grid-cols-12 m-0 p-0">
         <ng-container *ngIf="products.length; else isEmpty">
           <div *ngFor="let prod of products" class="col-span-12 md:col-span-6 lg:col-span-4 px-3 py-2">
             <app-product-list-item [product]="prod"></app-product-list-item>
@@ -59,7 +59,10 @@
           <div class="col-span-12 text-center">Not found products</div>
         </ng-template>
       </div>
-      <div class="card flex justify-center">
+      <ng-template #loading>
+        <span class="w-full flex justify-center">Loading...</span>
+      </ng-template>
+      <div *ngIf="!fetchingData && products.length" class="card flex justify-center">
         <p-paginator (onPageChange)="onPageChange($event)" [totalRecords]="total" [rows]="9"></p-paginator>
       </div>
     </div>

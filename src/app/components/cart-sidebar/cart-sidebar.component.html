@@ -19,7 +19,7 @@
               <span class="text-gray-900 font-medium">
                 {{ item.name }}</span>
               <span class="text-gray-900 font-bold">{{item.productAttributes[0].discountPrice ||
-                item.productAttributes[0].originPrice | currency}}</span>
+                item.productAttributes[0].originPrice | currency:'INR':'symbol-narrow'}}</span>
             </div>
             <div class="text-gray-600 text-sm mb-3">{{item.productAttributes[0].weight}}
               {{item.productAttributes[0].weightUnit}}</div>
@@ -46,7 +46,7 @@
         <span class="text-gray-900 font-medium">Total Amount
           <span class="text-gray-600 text-sm">incl. VAT</span>
         </span>
-        <span class="text-gray-900 font-bold">{{getTotalAmount() | currency}}</span>
+        <span class="text-gray-900 font-bold">{{getTotalAmount() | currency:'INR':'symbol-narrow'}}</span>
       </div>
       <button pButton routerLink="/cart" (click)="handleHideSidebar()" [disabled]="!cartItems.length" pRipple
         label="Check Out"

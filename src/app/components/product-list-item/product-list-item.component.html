@@ -7,9 +7,9 @@
     <p-dropdown [(ngModel)]="selectedAttribute" [options]="attributes" optionLabel="label"
       optionValue="value"></p-dropdown>
   </div>
-  <div class="text-gray-900 text-xl font-medium my-3 flex gap-2 items-end">{{ currentAttribute?.discountPrice| currency
+  <div class="text-gray-900 text-xl font-medium my-3 flex gap-2 items-end">{{ currentAttribute?.discountPrice| currency:'INR':'symbol-narrow'
     }}<span *ngIf="currentAttribute?.discountPercent" class="text-base line-through"> | {{
-      currentAttribute?.originPrice| currency }}</span>
+      currentAttribute?.originPrice| currency:'INR':'symbol-narrow' }}</span>
     <p-tag *ngIf="currentAttribute?.discountPercent" severity="warning"
       [value]="currentAttribute?.discountPercent + '%'"></p-tag>
   </div>
