@@ -50,8 +50,7 @@
   </div>
   <p-tabView>
     <p-tabPanel header="Details">
-      <p class="leading-6 text-gray-500 p-0 mx-0 mt-0 mb-4">
-        {{ product.description }}
+      <p class="leading-6 text-gray-500 p-0 mx-0 mt-0 mb-4" [innerHTML]="product.description">
       </p>
     </p-tabPanel><!---->
     <p-tabPanel header="Reviews">
