@@ -48,13 +48,27 @@
       </div>
     </div>
   </div>
+  <div *ngIf="similarProducts.length">
+    <div class="font-medium text-2xl">Similar Product</div>
+    <div class="w-full flex items-stretch overflow-x-auto gap-4">
+      <div *ngFor="let prod of similarProducts" class="min-w-[200px] w-[200px] flex">
+        <div routerLink="/products/{{prod.id}}"
+          class="flex-1 px-4 py-2 group relative border rounded-lg shadow-md cursor-pointer">
+          <img [src]="prod.productImages[0].imgUrl" alt="">
+          <div class="text-center p-4">
+            <span class="font-medium text-xl group-hover:text-blue-400 group-hover:font-bold">{{prod.name}}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
   <p-tabView>
     <p-tabPanel header="Details">
       <p class="leading-6 text-gray-500 p-0 mx-0 mt-0 mb-4" [innerHTML]="product.description">
       </p>
     </p-tabPanel><!---->
     <p-tabPanel header="Reviews">
-      <app-form-review></app-form-review>
+      <app-form-review (postReviewSuccess)="getProductDetails(product.id)"></app-form-review>
       <ul class="list-none p-0 mt-4">
         <ng-container *ngFor="let item of product.reviews">
           <app-reviews [review]="item"></app-reviews>

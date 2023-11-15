@@ -9,8 +9,6 @@ export abstract class BaseClass implements OnInit, OnDestroy {
   public limit = 30;
   public page = 1;
   public totalRecords = 0;
-  public cookie = {};
-  protected _coookie = inject(CookieService);
 
   protected unsubsribeOnDestroy = (
     source: Observable<any>
@@ -19,7 +17,6 @@ export abstract class BaseClass implements OnInit, OnDestroy {
   };
 
   ngOnInit(): void {
-    this.cookie = this._coookie.getAll();
   }
 
   ngOnDestroy(): void {

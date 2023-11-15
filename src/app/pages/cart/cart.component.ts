@@ -36,7 +36,7 @@ export class CartComponent extends BaseClass {
   }
 
   override ngOnInit() {
-    this.cartItems = JSON.parse(this._coookie.get('cartItems') || '[]');
+    this.cartItems = JSON.parse(localStorage.getItem('cartItems') || '[]');
   }
 
   public handleChangeQuantity(e: number = 0, prod: Product) {
@@ -46,7 +46,7 @@ export class CartComponent extends BaseClass {
         ? { ...item, quantity: e }
         : item
     );
-    this._coookie.set('cartItems', JSON.stringify(this.cartItems));
+    localStorage.setItem('cartItems', JSON.stringify(this.cartItems));
   }
 
   public handleDeleteItem(prod: Product) {
@@ -57,7 +57,7 @@ export class CartComponent extends BaseClass {
           item.productAttributes[0].id === prod.productAttributes[0].id
         )
     );
-    this._coookie.set('cartItems', JSON.stringify(this.cartItems));
+    localStorage.setItem('cartItems', JSON.stringify(this.cartItems));
   }
 
   public getTotalAmount() {
@@ -75,6 +75,7 @@ export class CartComponent extends BaseClass {
   }
 
   public handleSubmitOrder() {
+    localStorage.removeItem('cartItems');
     this.isFinish = true;
     this.finishOrderInformation = {
       ...this.finishOrderInformation,

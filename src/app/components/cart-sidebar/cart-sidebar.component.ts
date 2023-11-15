@@ -15,7 +15,7 @@ export class CartSidebarComponent extends BaseClass implements OnInit {
   }
 
   override ngOnInit() {
-    this.cartItems = JSON.parse(this._coookie.get('cartItems') || '[]');
+    this.cartItems = JSON.parse(localStorage.getItem('cartItems') || '[]');
   }
 
   public handleHideSidebar() {
@@ -44,7 +44,7 @@ export class CartSidebarComponent extends BaseClass implements OnInit {
           item.productAttributes[0].id === prod.productAttributes[0].id
         )
     );
-    this._coookie.set('cartItems', JSON.stringify(this.cartItems));
+    localStorage.setItem('cartItems', JSON.stringify(this.cartItems));
   }
 
   public handleChangeQuantity(e: number = 0, prod: Product) {
@@ -54,6 +54,6 @@ export class CartSidebarComponent extends BaseClass implements OnInit {
         ? { ...item, quantity: e }
         : item
     );
-    this._coookie.set('cartItems', JSON.stringify(this.cartItems));
+    localStorage.setItem('cartItems', JSON.stringify(this.cartItems));
   }
 }

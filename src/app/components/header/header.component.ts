@@ -25,7 +25,7 @@ export class HeaderComponent extends BaseClass implements OnInit {
   }
 
   override ngOnInit(): void {
-    this.cartItems = JSON.parse(this._coookie.get('cartItems') || '[]');
+    this.cartItems = JSON.parse(localStorage.getItem('cartItems') || '[]');
     this._activatedRoute.data.subscribe(({ categories }) => {
       this.categories = categories;
     });

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import {
   FormBuilder,
   FormControl,
@@ -6,6 +6,7 @@ import {
   Validators,
 } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
+import { MessageService } from 'primeng/api';
 import { ProductsService } from 'src/app/@common/services/products.service';
 import { ProductReview } from 'src/app/@common/types/product.type';
 
@@ -15,6 +16,7 @@ import { ProductReview } from 'src/app/@common/types/product.type';
   styleUrls: ['./form-review.component.scss'],
 })
 export class FormReviewComponent implements OnInit {
+  @Output() postReviewSuccess = new EventEmitter<boolean>(false);
   formReview = this._fb.group({
     customerName: ['', [Validators.required]],
     rate: [5, [Validators.required]],
@@ -26,7 +28,8 @@ export class FormReviewComponent implements OnInit {
   constructor(
     private _fb: FormBuilder,
     private _products: ProductsService,
-    private _route: ActivatedRoute
+    private _route: ActivatedRoute,
+    private _msg: MessageService
   ) {}
 
   ngOnInit(): void {
@@ -43,7 +46,13 @@ export class FormReviewComponent implements OnInit {
       };
       this._products.postReview(body as Partial<ProductReview>).subscribe({
         next: (res) => {
-          console.log(res);
+          this._msg.add({
+            severity: 'success',
+            summary: 'Susscess',
+            detail: 'Post reviews successfully',
+          });
+          this.postReviewSuccess.emit(true);
+          this.formReview.reset();
         },
         error: (err) => {
           console.log(err);

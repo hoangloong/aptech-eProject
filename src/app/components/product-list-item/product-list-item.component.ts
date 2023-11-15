@@ -39,7 +39,7 @@ export class ProductListItemComponent extends BaseClass implements OnInit {
       quantity: 1,
       productAttributes: this.currentAttribute ? [this.currentAttribute] : [],
     };
-    const cartItems = JSON.parse(this._coookie.get('cartItems') || '[]');
+    const cartItems = JSON.parse(localStorage.getItem('cartItems') || '[]');
     if (
       cartItems.some(
         (prod: Product) =>
@@ -55,9 +55,9 @@ export class ProductListItemComponent extends BaseClass implements OnInit {
           : item
       );
 
-      this._coookie.set('cartItems', JSON.stringify(newCartItems));
+      localStorage.setItem('cartItems', JSON.stringify(newCartItems));
     } else {
-      this._coookie.set(
+      localStorage.setItem(
         'cartItems',
         JSON.stringify([...cartItems, productSelected])
       );
